@@ -5,6 +5,8 @@
 --centang New line after PORT & GENERIC
 --centang customise Indentation, \t (one tab aja tulisannya)
 
+--Test push
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 ENTITY fsm IS
