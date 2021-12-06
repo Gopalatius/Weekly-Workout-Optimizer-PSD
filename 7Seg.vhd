@@ -1,18 +1,20 @@
 --sebelum push, format dulu di
---https://g2384.github.io/work/VHDLformatter.html
---pilih UPPERCASE
---centang New line after THEN, semicolon";"
---centang New line after PORT & GENERIC
+--https://g2384.github.io/VHDLFormatter/
+--pilih UPPERCASE semua
+--Show More Settings
+--NEW LINE semua
+--centang Align Signs in all places Mode global, align comments juga
 --centang customise Indentation, \t (one tab aja tulisannya)
+--centang add a new line at the end of file
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 ENTITY Dec7Seg IS
-	PORT 
+	PORT
 	(
 
-		I : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-		TGL_7 : IN STD_LOGIC;
+		I                   : IN  STD_LOGIC_VECTOR (3 DOWNTO 0);
+		TGL_7               : IN  STD_LOGIC;
 		A, B, C, D, E, F, G : OUT STD_LOGIC
 
 	);
@@ -30,7 +32,7 @@ BEGIN
 		(I(1) AND (NOT I(0))) OR (I(2) AND I(0) AND (NOT I(1)))) AND TGL_7;
 	E <= ((NOT(I(0)) AND ((NOT I(2)) OR I(1))) AND TGL_7;
 	F <= (I(3) OR (I(2) AND (NOT I(0))) OR (I(2) AND (NOT I(1))) OR
-			(NOT (I(1) OR I(0)))) AND TGL_7;
+		(NOT (I(1) OR I(0)))) AND TGL_7;
 	G <= (I(3) OR (I(2) XOR I(1)) OR (I(2) OR (NOT I(0)))) AND TGL_7;
 
 END arch_Dec7Seg;

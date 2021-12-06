@@ -1,3 +1,12 @@
+--sebelum push, format dulu di
+--https://g2384.github.io/VHDLFormatter/
+--pilih UPPERCASE semua
+--Show More Settings
+--NEW LINE semua
+--centang Align Signs in all places Mode global, align comments juga
+--centang customise Indentation, \t (one tab aja tulisannya)
+--centang add a new line at the end of file
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_ARITH.ALL;
