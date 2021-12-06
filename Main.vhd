@@ -1,19 +1,19 @@
 --sebelum push, format dulu di
---https://g2384.github.io/work/VHDLformatter.html
---pilih UPPERCASE
---centang New line after THEN, semicolon";"
---centang New line after PORT & GENERIC
+--https://g2384.github.io/VHDLFormatter/
+--pilih UPPERCASE semua
+--Show More Settings
+--NEW LINE semua
+--centang Align Signs in all places Mode global, align comments juga
 --centang customise Indentation, \t (one tab aja tulisannya)
-
---Test push
+--centang add a new line at the end of file
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 ENTITY fsm IS
-	PORT 
+	PORT
 	(
-		I, CLK : IN STD_LOGIC;
-		Soda : OUT STD_LOGIC
+		I, CLK : IN  STD_LOGIC;
+		Soda   : OUT STD_LOGIC
 	);
 END fsm;
 
@@ -27,13 +27,13 @@ BEGIN
 			PS <= NS;
 		END IF;
 	END PROCESS;
- 
+
 	comb_proc : PROCESS (PS, I)
 	BEGIN
 		Soda <= '0';
- 
+
 		CASE PS IS
-			WHEN ST0 => 
+			WHEN ST0 =>
 				IF (N = '1') THEN
 					NS <= ST1;
 				ELSIF (D = '1') THEN
@@ -41,7 +41,7 @@ BEGIN
 				ELSE
 					NS <= ST0;
 				END IF;
-			WHEN ST1 => 
+			WHEN ST1 =>
 				IF (N = '1') THEN
 					NS <= ST2;
 				ELSIF (D = '1') THEN
@@ -49,7 +49,7 @@ BEGIN
 				ELSE
 					NS <= ST1;
 				END IF;
-			WHEN ST2 => 
+			WHEN ST2 =>
 				IF (N = '1') THEN
 					NS <= ST3;
 				ELSIF (D = '1') THEN
@@ -57,15 +57,15 @@ BEGIN
 				ELSE
 					NS <= ST2;
 				END IF;
-			WHEN ST3 => 
+			WHEN ST3 =>
 				NS <= ST0;
-			WHEN OTHERS => 
+			WHEN OTHERS =>
 				NS <= ST0;
 		END CASE;
 	END PROCESS;
- 
+
 	WITH PS SELECT
-	Soda <= '1' WHEN ST3, 
-	        '0' WHEN OTHERS;
- 
+		Soda <= '1' WHEN ST3,
+		'0' WHEN OTHERS;
+
 END arc_fsm;

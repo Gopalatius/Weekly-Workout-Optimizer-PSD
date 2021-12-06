@@ -1,17 +1,19 @@
 --sebelum push, format dulu di
---https://g2384.github.io/work/VHDLformatter.html
---pilih UPPERCASE
---centang New line after THEN, semicolon";"
---centang New line after PORT & GENERIC
+--https://g2384.github.io/VHDLFormatter/
+--pilih UPPERCASE semua
+--Show More Settings
+--NEW LINE semua
+--centang Align Signs in all places Mode global, align comments juga
 --centang customise Indentation, \t (one tab aja tulisannya)
+--centang add a new line at the end of file
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 ENTITY toggle IS
-	PORT 
+	PORT
 	(
 
-		BTN : IN STD_LOGIC;
+		BTN    : IN  STD_LOGIC;
 		TOGGLE : OUT STD_LOGIC
 
 	);
@@ -22,7 +24,7 @@ ARCHITECTURE toggle_arch OF toggle IS
 
 BEGIN
 	TOGGLE <= buff_toggle;
- 
+
 	toggle_proc : PROCESS (BTN)
 	BEGIN
 		IF (rising_edge(BTN)) THEN

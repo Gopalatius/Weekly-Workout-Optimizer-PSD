@@ -1,9 +1,19 @@
 --sebelum push, format dulu di
+<<<<<<< HEAD
 --https://g2384.github.io/work/VHDLformatter.html
 --pilih UPPERCASE
 --centang New line after THEN, semicolon";"
 --centang New line after PORT & GENERIC
 --centang customise Indentation, \t (one tab aja tulisannya)
+=======
+--https://g2384.github.io/VHDLFormatter/
+--pilih UPPERCASE semua
+--Show More Settings
+--NEW LINE semua
+--centang Align Signs in all places Mode global, align comments juga
+--centang customise Indentation, \t (one tab aja tulisannya)
+--centang add a new line at the end of file
+>>>>>>> a86f2bd562c1ffc0b0e60bcbb235d6f0f7a47c34
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -11,54 +21,54 @@ USE ieee.std_logic_ARITH.ALL;
 USE ieee.std_logic_unsigned.ALL;
 
 ENTITY wrkCount IS
-    	PORT 
-    	(
-            
-    	    	ALL_0, TOGGLE, OPTIMAL : IN STD_LOGIC;
-    	    	BTN_7 : IN STD_LOGIC;
+	PORT
+	(
 
-    	    	IS_7, OPT_Q2, OPT_Q2aks : OUT STD_LOGIC
+		ALL_0, TOGGLE, OPTIMAL  : IN  STD_LOGIC;
+		BTN_7                   : IN  STD_LOGIC;
 
-    	);
+		IS_7, OPT_Q2, OPT_Q2aks : OUT STD_LOGIC
+
+	);
 END wrkCount;
 
 ARCHITECTURE wrkCountArch OF wrkCount IS
-    	SIGNAL jmlWorkClk : STD_LOGIC;
-    	SIGNAL optWorkClk : STD_LOGIC;
-    	SIGNAL jmlWorkCount : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0000";
-    	SIGNAL optWorkCount : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0000";
+	SIGNAL jmlWorkClk   : STD_LOGIC;
+	SIGNAL optWorkClk   : STD_LOGIC;
+	SIGNAL jmlWorkCount : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0000";
+	SIGNAL optWorkCount : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0000";
 
 BEGIN
-    	jmlWorkClk <= ALL_0 AND TOGGLE;
-    	optWorkClk <= jmlWorkClk AND OPTIMAL;
+	jmlWorkClk <= ALL_0 AND TOGGLE;
+	optWorkClk <= jmlWorkClk AND OPTIMAL;
 
-    	PROCESS (BTN_7, jmlWorkClk, optWorkClk)
-    	BEGIN
-    	    	IF (BTN_7 = '1') THEN
- 
-    	    	    	jmlWorkCount <= "0000";
+	PROCESS (BTN_7, jmlWorkClk, optWorkClk)
+	BEGIN
+		IF (BTN_7 = '1') THEN
 
-    	    	ELSIF (rising_edge(jmlWorkClk)) THEN
+			jmlWorkCount <= "0000";
 
-    	    	    	jmlWorkCount <= jmlWorkCount + 1;
+		ELSIF (rising_edge(jmlWorkClk)) THEN
 
-    	    	END IF;
+			jmlWorkCount <= jmlWorkCount + 1;
 
-    	    	IF (BTN_7 = '1') THEN
+		END IF;
 
-    	    	    	optWorkCount <= "0000";
+		IF (BTN_7 = '1') THEN
 
-    	    	ELSIF (rising_edge(optWorkClk)) THEN
+			optWorkCount <= "0000";
 
-    	    	    	optWorkCount <= optWorkCount + 1;
+		ELSIF (rising_edge(optWorkClk)) THEN
 
-    	    	END IF;
+			optWorkCount <= optWorkCount + 1;
 
-    	END PROCESS;
+		END IF;
 
-    	IS_7 <= jmlWorkCount(0) AND jmlWorkCount(1) AND jmlWorkCount(2);
+	END PROCESS;
 
-    	OPT_Q2 <= optWorkCount(2);
-    	OPT_Q2aks <= NOT(optWorkCount(2));
+	IS_7      <= jmlWorkCount(0) AND jmlWorkCount(1) AND jmlWorkCount(2);
+
+	OPT_Q2    <= optWorkCount(2);
+	OPT_Q2aks <= NOT(optWorkCount(2));
 
 END wrkCountArch;
