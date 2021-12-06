@@ -43,7 +43,8 @@ BEGIN
 
 	ALL_0 <= all0Signal;
 	CLK_STOP <= clkStopSignal;
-
+    
+    --1A_ and 2A_ output
 	A1_out <= ((NOT Qin(0)) AND Qin(1) AND Qin(2)) OR A1;
 	A2_out <= ((NOT Qin(4)) AND Qin(5) AND Qin(6) AND TOGGLE) OR A2;
 
