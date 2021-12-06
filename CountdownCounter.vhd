@@ -24,21 +24,17 @@ END CountDown;
 
 ARCHITECTURE arch_CountDown OF CountDown IS
 
-	SIGNAL temp : STD_LOGIC_VECTOR (3 DOWNTO 0) := "0000";
+	SIGNAL temp : std_logic_vector (3 DOWNTO 0) := "0000";
 BEGIN
 	countdown_proc : PROCESS (CLK, LOAD) IS
 	BEGIN
-		TCD <= '1';
 		IF (LOAD = '1') THEN
 			temp <= D;
 		ELSIF (rising_edge(CLK)) THEN
 			temp <= temp - 1;
-		ELSIF (falling_edge(CLK) AND (temp = '1111')) THEN
-			TCD <= '0';
 		END IF;
-
 	END PROCESS;
-
+ 
 	Q <= temp;
-
+ 
 END arch_CountDown;
