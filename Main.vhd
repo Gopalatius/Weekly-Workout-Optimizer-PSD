@@ -12,23 +12,23 @@ USE ieee.std_logic_1164.ALL;
 ENTITY fsm IS
 	PORT 
 	(
-		D, N, CLK : IN STD_LOGIC;
+		I, CLK : IN STD_LOGIC;
 		Soda : OUT STD_LOGIC
 	);
 END fsm;
 
 ARCHITECTURE arc_fsm OF fsm IS
-	TYPE states IS (ST0, ST1, ST2, ST3);
+	TYPE states IS (ST0, ST1, ST2, ST3, ST4, ST5, ST6, ST7);
 	SIGNAL PS, NS : states;
 BEGIN
 	sync_proc : PROCESS (CLK, NS)
 	BEGIN
-		IF (rising_edge(CLK)) THEN
+		IF (rising_edge(I)) THEN
 			PS <= NS;
 		END IF;
 	END PROCESS;
  
-	comb_proc : PROCESS (PS, D, N)
+	comb_proc : PROCESS (PS, I)
 	BEGIN
 		Soda <= '0';
  
