@@ -8,34 +8,33 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_arith.ALL;
-use ieee.std_logic_unsigned.ALL;
+USE ieee.std_logic_unsigned.ALL;
 
 ENTITY CountDown IS
 	PORT 
 	(
 		--ini nanti load colok ke button
 		D : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-		CLK, LOAD: IN STD_LOGIC;
-		Q : OUT STD_LOGIC_VECTOR (3 downto 0);
-		TCD: OUT STD_LOGIC
+		CLK, LOAD : IN STD_LOGIC;
+		Q : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+		TCD : OUT STD_LOGIC
 
 	);
 END CountDown;
 
 ARCHITECTURE arch_CountDown OF CountDown IS
 
-	signal temp: std_logic_vector (3 downto 0) := "0000";
+	SIGNAL temp : std_logic_vector (3 DOWNTO 0) := "0000";
 BEGIN
-	
-	countdown_proc: process (CLK,LOAD) is
-	begin
-		if (LOAD = '1') then
+	countdown_proc : PROCESS (CLK, LOAD) IS
+	BEGIN
+		IF (LOAD = '1') THEN
 			temp <= D;
-		elsif (rising_edge(CLK)) then
+		ELSIF (rising_edge(CLK)) THEN
 			temp <= temp - 1;
-		end if;
-	end process;
-	
+		END IF;
+	END PROCESS;
+ 
 	Q <= temp;
-			
+ 
 END arch_CountDown;
