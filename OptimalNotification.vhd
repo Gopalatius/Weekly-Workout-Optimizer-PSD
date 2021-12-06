@@ -19,11 +19,11 @@ ENTITY optNotif IS
 	);
 END optNotif;
 
-ARCHITECTURE wrkCountArch OF wrkCount IS
+ARCHITECTURE optNotif_arch OF optNotif IS
  
 
 BEGIN
 	Buzzer_opt <= ALL_0 AND OPTIMAL AND TOGGLE;
 	Buzzer_non_opt <= ALL_0 AND (NOT(OPTIMAL)) AND TOGGLE;
 
-END wrkCountArch;
+END optNotif_arch;
