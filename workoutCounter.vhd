@@ -1,3 +1,10 @@
+--sebelum push, format dulu di
+--https://g2384.github.io/work/VHDLformatter.html
+--pilih UPPERCASE
+--centang New line after THEN, semicolon";"
+--centang New line after PORT & GENERIC
+--centang customise Indentation, \t (one tab aja tulisannya)
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_ARITH.ALL;
