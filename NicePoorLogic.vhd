@@ -7,14 +7,15 @@
 --centang customise Indentation, \t (one tab aja tulisannya)
 --centang add a new line at the end of file
 
+--VHDL Code for 7 segment Decoder displaying Nice or Poor
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY nicePoorLogic IS
 	PORT (
-		IS_7, OPT_Q2, OPT_Q2' : IN STD_LOGIC;
-		A_1, B_1, C_1, D_1, E_1, F_1, G_1 : IN STD_LOGIC;
-		A_2, B_2, C_2, D_2, E_2, F_2, G_2 : OUT STD_LOGIC;
+		IS_7, OPT_Q2, OPT_Q2' 				: IN STD_LOGIC;
+		A_1, B_1, C_1, D_1, E_1, F_1, G_1 	: IN STD_LOGIC;
+		A_2, B_2, C_2, D_2, E_2, F_2, G_2 	: OUT STD_LOGIC;
 
 		A1, B1, C1, D1, E1, F1, G1 : OUT STD_LOGIC;
 		A2, B2, C2, D2, E2, F2, G2 : OUT STD_LOGIC;
