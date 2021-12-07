@@ -23,16 +23,17 @@ END Dec7Seg;
 ARCHITECTURE arch_Dec7Seg OF Dec7Seg IS
 
 BEGIN
-	--BCD to 7Seg dengan TGL_7 sebagai enabler 
-	--TGL_7 merupakan imitasi dari BI/RBO
-	A <= (I(2) XNOR I(0) OR I(1) OR I(3)) AND TGL_7;
-	B <= (I(1) XNOR I(0) OR (NOT I(2))) AND TGL_7;
-	C <= (I(2) OR (NOT I(1)) OR I(0)) AND TGL_7;
-	D <= (I(3) OR ((NOT I(2)) AND I(1)) OR ((NOT I(2)) AND (NOT I(0))) OR
+	-- BCD to 7Seg dengan TGL_7 sebagai enabler 
+	-- TGL_7 merupakan imitasi dari BI/RBO
+	-- O merupakan ABCDEFG. Dibuat bus agar rapi
+	O(6) <= (I(2) XNOR I(0) OR I(1) OR I(3)) AND TGL_7;
+	O(5) <= (I(1) XNOR I(0) OR (NOT I(2))) AND TGL_7;
+	O(4) <= (I(2) OR (NOT I(1)) OR I(0)) AND TGL_7;
+	O(3) <= (I(3) OR ((NOT I(2)) AND I(1)) OR ((NOT I(2)) AND (NOT I(0))) OR
 		(I(1) AND (NOT I(0))) OR (I(2) AND I(0) AND (NOT I(1)))) AND TGL_7;
-	E <= ((NOT(I(0)) AND ((NOT I(2)) OR I(1))) AND TGL_7;
-	F <= (I(3) OR (I(2) AND (NOT I(0))) OR (I(2) AND (NOT I(1))) OR
+	O(2) <= ((NOT(I(0)) AND ((NOT I(2)) OR I(1))) AND TGL_7;
+	O(1) <= (I(3) OR (I(2) AND (NOT I(0))) OR (I(2) AND (NOT I(1))) OR
 		(NOT (I(1) OR I(0)))) AND TGL_7;
-	G <= (I(3) OR (I(2) XOR I(1)) OR (I(2) OR (NOT I(0)))) AND TGL_7;
+	O(0) <= (I(3) OR (I(2) XOR I(1)) OR (I(2) OR (NOT I(0)))) AND TGL_7;
 
 END arch_Dec7Seg;
