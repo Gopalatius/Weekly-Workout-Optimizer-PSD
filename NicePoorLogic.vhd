@@ -11,51 +11,50 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY nicePoorLogic IS
-	PORT
-	(
-		IS_7, OPT_Q2, OPT_Q2'             : IN  STD_LOGIC;
-		1A_, 1B_, 1C_, 1D_, 1E_, 1F_, 1G_ : IN  STD_LOGIC;
-		2A_, 2B_, 2C_, 2D_, 2E_, 2F_, 2G_ : OUT STD_LOGIC;
+	PORT (
+		IS_7, OPT_Q2, OPT_Q2' : IN STD_LOGIC;
+		A_1, B_1, C_1, D_1, E_1, F_1, G_1 : IN STD_LOGIC;
+		A_2, B_2, C_2, D_2, E_2, F_2, G_2 : OUT STD_LOGIC;
 
-		1A, 1B, 1C, 1D, 1E, 1F, 1G        : OUT STD_LOGIC;
-		2A, 2B, 2C, 2D, 2E, 2F, 2G        : OUT STD_LOGIC;
-		3A, 3B, 3C, 3D, 3E, 3F, 3G        : OUT STD_LOGIC;
-		4A, 4B, 4C, 4D, 4E, 4F, 4G        : OUT STD_LOGIC
+		A1, B1, C1, D1, E1, F1, G1 : OUT STD_LOGIC;
+		A2, B2, C2, D2, E2, F2, G2 : OUT STD_LOGIC;
+		A3, B3, C3, D3, E3, F3, G3 : OUT STD_LOGIC;
+		A4, B4, C4, D4, E4, F4, G4 : OUT STD_LOGIC
 	);
 END nicePoorLogic;
 
 ARCHITECTURE nicePoorLogic_arc OF nicePoorLogic IS
 BEGIN
-	1A <= 1A_ OR (OPT_Q2 AND IS_7);
-	1B <= 1B_;
-	1C <= 1C_;
-	1D <= 1D_ OR (OPT_Q2 AND IS_7);
-	1E <= 1E_ OR ('1' AND IS_7);
-	1F <= 1F OR (OPT_Q2 AND IS_7);
-	1G <= 1G OR ('1' AND IS_7);
+	A1 <= A_1 OR (OPT_Q2 AND IS_7);
+	B1 <= B_1;
+	C1 <= C_;
+	D1 <= D_1 OR (OPT_Q2 AND IS_7);
+	E1 <= E_1 OR ('1' AND IS_7);
+	F1 <= F1 OR (OPT_Q2 AND IS_7);
+	G1 <= G1 OR ('1' AND IS_7);
 
-	2A <= 2A_ OR ('1' AND IS_7);
-	2B <= 2B_ OR (OPT_Q2' AND IS_7);
-	2C <= 2C_ OR (OPT_Q2' AND IS_7);
-	2D <= 2D_ OR ('1' AND IS_7);
-	2E <= 2E_ OR ('1' AND IS_7);
-	2F <= 2F_ OR ('1' AND IS_7);
-	2G <= 2G_;
+	A2 <= A_2 OR ('1' AND IS_7);
+	B2 <= B_2 OR (OPT_Q2' AND IS_7);
+	C2 <= C_2 OR (OPT_Q2' AND IS_7);
+	D2 <= D_2 OR ('1' AND IS_7);
+	E2 <= E_2 OR ('1' AND IS_7);
+	F2 <= F_2 OR ('1' AND IS_7);
+	G2 <= G_2;
 
-	3A <= OPT_Q2' AND IS_7;
-	3B <= OPT_Q2' AND IS_7;
-	3C <= OPT_Q2' AND IS_7;
-	3D <= OPT_Q2' AND IS_7;
-	3E <= OPT_Q2' AND IS_7;
-	3F <= '1' AND IS_7;
-	3G <= '0';
+	A3 <= OPT_Q2' AND IS_7;
+	B3 <= OPT_Q2' AND IS_7;
+	C3 <= OPT_Q2' AND IS_7;
+	D3 <= OPT_Q2' AND IS_7;
+	E3 <= OPT_Q2' AND IS_7;
+	F3 <= '1' AND IS_7;
+	G3 <= '0';
 
-	4A <= '1' AND IS_7;
-	4B <= '1' AND IS_7;
-	4C <= OPT_Q2 AND IS_7;
-	4D <= '0';
-	4E <= '1' AND IS_7;
-	4F <= '1' AND IS_7;
-	4G <= OPT_Q2' AND IS_7;
+	A4 <= '1' AND IS_7;
+	B4 <= '1' AND IS_7;
+	C4 <= OPT_Q2 AND IS_7;
+	D4 <= '0';
+	E4 <= '1' AND IS_7;
+	F4 <= '1' AND IS_7;
+	G4 <= OPT_Q2' AND IS_7;
 
 END nicePoorLogic_arc;
