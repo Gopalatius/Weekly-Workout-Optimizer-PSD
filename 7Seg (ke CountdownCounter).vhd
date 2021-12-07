@@ -15,7 +15,7 @@ ENTITY Dec7Seg IS
 
 		I                   : IN  STD_LOGIC_VECTOR (3 DOWNTO 0);
 		TGL_7               : IN  STD_LOGIC;
-		A, B, C, D, E, F, G : OUT STD_LOGIC
+		O : OUT STD_LOGIC (6 downto 0)
 
 	);
 END Dec7Seg;
