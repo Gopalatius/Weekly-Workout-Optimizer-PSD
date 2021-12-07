@@ -1,11 +1,4 @@
 --sebelum push, format dulu di
-<<<<<<< HEAD
---https://g2384.github.io/work/VHDLformatter.html
---pilih UPPERCASE
---centang New line after THEN, semicolon";"
---centang New line after PORT & GENERIC
---centang customise Indentation, \t (one tab aja tulisannya)
-=======
 --https://g2384.github.io/VHDLFormatter/
 --pilih UPPERCASE semua
 --Show More Settings
@@ -13,7 +6,6 @@
 --centang Align Signs in all places Mode global, align comments juga
 --centang customise Indentation, \t (one tab aja tulisannya)
 --centang add a new line at the end of file
->>>>>>> a86f2bd562c1ffc0b0e60bcbb235d6f0f7a47c34
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
