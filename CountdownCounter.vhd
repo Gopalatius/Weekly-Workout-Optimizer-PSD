@@ -19,8 +19,7 @@ ENTITY CountDownCounter IS
 		--alasan terdapat A dibuat double underscore
 		CLK_STOP, BTN, TGL_7 : IN  STD_LOGIC;
 		Q                    : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-		A_1, B_1, C_1, D_1, E_1, F_1, G_1,
-		A_2, B_2, C_2, D_2, E_2, F_2, G_2 : OUT STD_LOGIC
+		O1, O2               : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
 
 	);
 END CountDownCounter;
@@ -30,9 +29,9 @@ ARCHITECTURE arch_CountDownCounter OF CountDownCounter IS
 		PORT
 		(
 
-			I                   : IN  STD_LOGIC_VECTOR (3 DOWNTO 0);
-			TGL_7               : IN  STD_LOGIC;
-			A, B, C, D, E, F, G : OUT STD_LOGIC
+			I     : IN  STD_LOGIC_VECTOR (3 DOWNTO 0);
+			TGL_7 : IN  STD_LOGIC;
+			O     : OUT STD_LOGIC (6 DOWNTO 0)
 
 		);
 	END COMPONENT;
@@ -62,10 +61,10 @@ BEGIN
 	MAP (D => "0110", CLK => TCD, LOAD => BTN, Q => Q_temp(7 DOWNTO 4), TCD => GARBAGE);
 
 	decoder1 : Dec7Seg PORT
-	MAP (I => Q_temp(3 DOWNTO 0), TGL_7 => TGL_7, A => A__1, B => B_1, C => C_1, D => D_1, E => E_1, F => F_1, G => G_1);
+	MAP (I => Q_temp(3 DOWNTO 0), TGL_7 => TGL_7, O => O1);
 
 	decoder2 : Dec7Seg PORT
-	MAP (I => Q_temp(7 DOWNTO 4), TGL_7 => TGL_7, A => A__2, B => B_2, C => C_2, D => D_2, E => E_2, F => F_2, G => G_2);
+	MAP (I => Q_temp(7 DOWNTO 4), TGL_7 => TGL_7, O => O2);
 
 	Q <= Q_temp;
 
