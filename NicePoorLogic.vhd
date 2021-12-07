@@ -13,49 +13,62 @@ USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY nicePoorLogic IS
 	PORT (
-		IS_7, OPT_Q2, OPT_Q2' 				: IN STD_LOGIC;
-		A_1, B_1, C_1, D_1, E_1, F_1, G_1 	: IN STD_LOGIC;
-		A_2, B_2, C_2, D_2, E_2, F_2, G_2 	: OUT STD_LOGIC;
+		-- OPT_Q2' tidak perlu
+		IS_7, OPT_Q2			: IN STD_LOGIC;
+		
+		-- Input dari output decoder 1 dan 2 (1 LSB dan 2 MSB)
+		I1, I2 : IN STD_LOGIC_VECTOR (6 downto 0);
 
-		A1, B1, C1, D1, E1, F1, G1 : OUT STD_LOGIC;
-		A2, B2, C2, D2, E2, F2, G2 : OUT STD_LOGIC;
-		A3, B3, C3, D3, E3, F3, G3 : OUT STD_LOGIC;
-		A4, B4, C4, D4, E4, F4, G4 : OUT STD_LOGIC
+		-- output yang menuju ke 7segment sebenarnya
+		-- isinya adalah output dari downcounter dan
+		-- untuk logika NICE dan POOR
+		O1, O2, O3, O4 : OUT STD_LOGIC_VECTOR (6 downto 0);
+		
 	);
 END nicePoorLogic;
 
 ARCHITECTURE nicePoorLogic_arc OF nicePoorLogic IS
+	signal OPT_Q2andIS_7 , notOPT_Q2andIS_7 : STD_LOGIC;
+	
 BEGIN
-	A1 <= A_1 OR (OPT_Q2 AND IS_7);
-	B1 <= B_1;
-	C1 <= C_;
-	D1 <= D_1 OR (OPT_Q2 AND IS_7);
-	E1 <= E_1 OR ('1' AND IS_7);
-	F1 <= F1 OR (OPT_Q2 AND IS_7);
-	G1 <= G1 OR ('1' AND IS_7);
+	--intermediate signal untuk menghemat gerbang and
+	--tidak seperti di Proteus
+	OPT_Q2andIS_7 <= OPT_Q2 AND IS_7;
+	notOPT_Q2andIS_7 <= (not(OPT_Q2) and IS_7);
 
-	A2 <= A_2 OR ('1' AND IS_7);
-	B2 <= B_2 OR (OPT_Q2' AND IS_7);
-	C2 <= C_2 OR (OPT_Q2' AND IS_7);
-	D2 <= D_2 OR ('1' AND IS_7);
-	E2 <= E_2 OR ('1' AND IS_7);
-	F2 <= F_2 OR ('1' AND IS_7);
-	G2 <= G_2;
+	O1(6) <= I1(6) OR OPT_Q2andIS_7;
+	O1(5) <= I1(5);
+	O1(4) <= I1(4);
+	O1(3) <= I1(3) OR OPT_Q2andIS_7;
+	-- Diubah menjadi I1(2) AND IS_7 aja.
+	-- Baru sadar bahwa VCC di-AND akan ngikut
+	-- dengan IS_7
+	O1(2) <= I1(2) OR IS_7;
+	O1(1) <= I1(1) OR OPT_Q2andIS_7;
+	O1(0) <= I1(0) OR IS_7;
 
-	A3 <= OPT_Q2' AND IS_7;
-	B3 <= OPT_Q2' AND IS_7;
-	C3 <= OPT_Q2' AND IS_7;
-	D3 <= OPT_Q2' AND IS_7;
-	E3 <= OPT_Q2' AND IS_7;
-	F3 <= '1' AND IS_7;
-	G3 <= '0';
+	O2(6) <= I2(6) OR IS_7;
+	O2(5) <= I2(5) OR notOPT_Q2andIS_7;
+	O2(4) <= I2(4) OR notOPT_Q2andIS_7;
+	O2(3) <= I2(3) OR IS_7;
+	O2(2) <= I2(2) OR IS_7;
+	O2(1) <= I2(1) OR IS_7;
+	O2(0) <= I2(0);
 
-	A4 <= '1' AND IS_7;
-	B4 <= '1' AND IS_7;
-	C4 <= OPT_Q2 AND IS_7;
-	D4 <= '0';
-	E4 <= '1' AND IS_7;
-	F4 <= '1' AND IS_7;
-	G4 <= OPT_Q2' AND IS_7;
+	O3(6) <= notOPT_Q2andIS_7;
+	O3(5) <= notOPT_Q2andIS_7;
+	O3(4) <= notOPT_Q2andIS_7;
+	O3(3) <= notOPT_Q2andIS_7;
+	O3(2) <= notOPT_Q2andIS_7;
+	O3(1) <= IS_7;
+	O3(0) <= IS_7;
+
+	O4(6) <= IS_7;
+	O4(5) <= IS_7;
+	O4(4) <= OPT_Q2andIS_7;
+	O4(3) <= '0';
+	O4(2) <= IS_7;
+	O4(1) <= IS_7;
+	O4(0) <= notOPT_Q2andIS_7;
 
 END nicePoorLogic_arc;
