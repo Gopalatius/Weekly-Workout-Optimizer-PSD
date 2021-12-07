@@ -65,55 +65,62 @@ ARCHITECTURE arc_fsm OF fsm IS
 	--dijadikan intermediate signal agar bisa dimasukkan
 	--ke dalam sensitivity list. Tidak ada di proteus
 	SIGNAL ALL_0_AND_TOGGLE                    : STD_LOGIC;
+	SIGNAL ALL_0_AND_TOGGLE_AND_OPTIMAL : STD_LOGIC;
 	
 BEGIN
 	--dijadikan intermediate signal agar bisa dimasukkan
 	--ke dalam sensitivity list
 	ALL_0_AND_TOGGLE <= ALL_0 AND TOGGLE;
+	ALL_0_AND_TOGGLE_AND_OPTIMAL <= ALL_0_AND_TOGGLE AND OPTIMAL;
 
-	sync_proc : PROCESS (ALL_0_AND_TOGGLE) IS
+	sync_proc : PROCESS (ALL_0_AND_TOGGLE, NS, BTN_7) IS
 	BEGIN
-		IF (rising_edge(ALL_0_AND_TOGGLE)) THEN
+		IF (BTN_7 = '1') THEN
+			PS <= ST0;
+		ELSIF (rising_edge(ALL_0_AND_TOGGLE)) THEN
 			PS <= NS;
 		END IF;
 	END PROCESS;
 
-	comb_proc : PROCESS (PS, I) IS
+	comb_proc : PROCESS (PS) IS
 	BEGIN
 		CASE PS IS
 			WHEN ST0 =>
-				IF (N = '1') THEN
-					NS <= ST1;
-				ELSIF (D = '1') THEN
-					NS <= ST2;
-				ELSE
-					NS <= ST0;
-				END IF;
+				NS <= ST1;
 			WHEN ST1 =>
-				IF (N = '1') THEN
-					NS <= ST2;
-				ELSIF (D = '1') THEN
-					NS <= ST3;
-				ELSE
-					NS <= ST1;
-				END IF;
+				NS <= ST2;
 			WHEN ST2 =>
-				IF (N = '1') THEN
-					NS <= ST3;
-				ELSIF (D = '1') THEN
-					NS <= ST3;
-				ELSE
-					NS <= ST2;
-				END IF;
+				NS <= ST3;
 			WHEN ST3 =>
-				NS <= ST0;
-			WHEN OTHERS =>
+				NS <= ST4;
+			WHEN ST4 =>
+				NS <= ST5;
+			WHEN ST5 =>
+				NS <= ST6;
+			WHEN ST6 =>
+				NS <= ST7;
+			WHEN ST7 =>
 				NS <= ST0;
 		END CASE;
 	END PROCESS;
 
+	-- states menentukan JUMLAH_WORKOUT
 	WITH PS SELECT
-		Soda <= '1' WHEN ST3,
-		'0' WHEN OTHERS;
-
+		JUMLAH_WORKOUT <= "001" WHEN ST1,
+							"010" WHEN ST2,
+							"011" WHEN ST3,
+							"100" WHEN ST4,
+							"101" WHEN ST5,
+							"101" WHEN ST6,
+							"110" WHEN ST6,
+							"111" WHEN ST7,
+							"000" WHEN OTHERS;
+	WITH PS SELECT
+		OPTIMAL_WORKOUT <= "000" WHEN S
+	
+	opt_workout_proc : process (ALL_0_AND_TOGGLE_AND_OPTIMAL) is
+	begin
+		if (rising_edge(ALL_0_AND_TOGGLE_AND_OPTIMAL) THEN
+			
+							
 END arc_fsm;
