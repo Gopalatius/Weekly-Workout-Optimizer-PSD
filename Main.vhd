@@ -264,7 +264,8 @@ BEGIN
 			--sekarang clock harusnya telah berhenti
 			
 			if (j < 3) then
-				assert Buzzer_opt = '1' and real_O1 = "0000
+				assert Buzzer_opt = '1' and real_O1 = "0000";
+			end if;
 			
 			
 		end loop;
