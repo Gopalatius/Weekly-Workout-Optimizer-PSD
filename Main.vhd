@@ -175,7 +175,7 @@ BEGIN
 	-- Clock process
 	clk_proc : PROCESS
 	BEGIN
-		CLK <= TOGGLE;
+		CLK <= '1';
 		WAIT FOR T/2;
 		CLK <= '0';
 		WAIT FOR T/2;
