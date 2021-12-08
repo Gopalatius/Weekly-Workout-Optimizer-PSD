@@ -22,7 +22,7 @@ ENTITY nicePoorLogic IS
 		-- output yang menuju ke 7segment sebenarnya
 		-- isinya adalah output dari downcounter dan
 		-- untuk logika NICE dan POOR
-		O1, O2, O3, O4 : OUT STD_LOGIC_VECTOR (6 downto 0);
+		O1, O2, O3, O4 : OUT STD_LOGIC_VECTOR (6 downto 0)
 		
 	);
 END nicePoorLogic;
