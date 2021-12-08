@@ -280,7 +280,7 @@ BEGIN
 				WAIT FOR 500 ps;
 				BTN <= '0';
 				-- ini untuk mematikan Toggle
-
+				
 				-- cek output LED. Harusnya blank-blank-0-0
 				CASE present_state is
 					WHEN ST7 =>
@@ -298,8 +298,7 @@ BEGIN
 							REPORT "Error saat State7 NICE" SEVERITY error;
 						END IF;
 				END CASE;
-				
-				
+				--agar jadi 60 ns
 				WAIT FOR 37 ns;
 			END LOOP;
 			--agar simulate ALL langsung berhenti
@@ -308,6 +307,109 @@ BEGIN
 			END IF;
 		END LOOP;
 
+
+
+		-- --iterasi hari pertama hingga hari ketujuh
+		-- -- untuk hari pertama hingga hari ketiga optimal
+		-- for j in 0 to 6 loop
+		-- 	-- initial state bahwa OPTIMAL '0'
+		-- 	-- karena belum mengukur suhu
+		-- 	OPTIMAL <= '0';
+			
+		-- 	-- untuk menekan tombol
+		-- 	BTN <= '0';
+		-- 	WAIT FOR 1 ps;
+		-- 	BTN <= '1';
+		-- 	WAIT FOR 1 ps;
+		-- 	BTN <= '0';
+		-- 	-- ini nanti akan menyalakan toggle
+			
+		-- 	-- untuk menunggu setimbang saat mengukur suhu
+		-- 	-- anggap 30 detik sudah setimbang
+		-- 	WAIT FOR 30 ns;
+			
+		-- 	-- untuk hari pertama sampai ketiga, workoutnya
+		-- 	-- optimal
+		-- 	if (j < 3) then
+		-- 		OPTIMAL <= '1';
+		-- 	end if;
+			
+		-- 	WAIT FOR 31 ns;
+		-- 	--pengukuran suhu telah selesai
+		-- 	OPTIMAL <= '0';
+		-- 	--sekarang clock harusnya telah berhenti
+			
+		-- 	if (j < 3) then
+		-- 		assert Buzzer_opt = '1' and real_O1 = "0000";
+		-- 	end if;
+		-- end loop;
+		
+		-- --untuk hari pertama sampai hari ke4 optimal
+		-- for j in 0 to 6 loop
+		-- 	-- initial state bahwa OPTIMAL '0'
+		-- 	-- karena belum mengukur suhu
+		-- 	OPTIMAL <= '0';
+			
+		-- 	-- untuk menekan tombol
+		-- 	BTN <= '0';
+		-- 	WAIT FOR 1 ps;
+		-- 	BTN <= '1';
+		-- 	WAIT FOR 1 ps;
+		-- 	BTN <= '0';
+		-- 	-- ini nanti akan menyalakan toggle
+			
+		-- 	-- untuk menunggu setimbang saat mengukur suhu
+		-- 	-- anggap 30 detik sudah setimbang
+		-- 	WAIT FOR 30 ns;
+			
+		-- 	-- untuk hari pertama sampai keempat, workoutnya
+		-- 	-- optimal
+		-- 	if (j < 4) then
+		-- 		OPTIMAL <= '1';
+		-- 	end if;
+			
+		-- 	WAIT FOR 31 ns;
+		-- 	--pengukuran suhu telah selesai
+		-- 	OPTIMAL <= '0';
+		-- 	--sekarang clock harusnya telah berhenti
+			
+		-- 	if (j < 4) then
+		-- 		assert Buzzer_opt = '1' and real_O1 = "0000";
+		-- 	end if;
+		-- end loop;
+		
+		-- --untuk hari pertama sampai hari keenam optimal
+		-- for j in 0 to 6 loop
+		-- 	-- initial state bahwa OPTIMAL '0'
+		-- 	-- karena belum mengukur suhu
+		-- 	OPTIMAL <= '0';
+			
+		-- 	-- untuk menekan tombol
+		-- 	BTN <= '0';
+		-- 	WAIT FOR 1 ps;
+		-- 	BTN <= '1';
+		-- 	WAIT FOR 1 ps;
+		-- 	BTN <= '0';
+		-- 	-- ini nanti akan menyalakan toggle
+			
+		-- 	-- untuk menunggu setimbang saat mengukur suhu
+		-- 	-- anggap 30 detik sudah setimbang
+		-- 	WAIT FOR 30 ns;
+			
+		-- 	-- untuk hari pertama sampai keenam, workoutnya
+		-- 	-- optimal
+		-- 	if (j < 6) then
+		-- 		OPTIMAL <= '1';
+		-- 	end if;
+			
+		-- 	WAIT FOR 31 ns;
+		-- 	--pengukuran suhu telah selesai
+		-- 	OPTIMAL <= '0';
+		-- 	--sekarang clock harusnya telah berhenti
+			
+		-- 	if (j < 6) then
+		-- 		assert Buzzer_opt = '1' and real_O1 = "0000";
+		-- 	end if;
 
 	END PROCESS;
 
