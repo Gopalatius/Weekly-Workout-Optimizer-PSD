@@ -175,9 +175,9 @@ BEGIN
 	-- Clock process
 	clk_proc : PROCESS
 	BEGIN
-		CLK <= '0';
-		WAIT FOR T/2;
 		CLK <= TOGGLE;
+		WAIT FOR T/2;
+		CLK <= '0';
 		WAIT FOR T/2;
 	END PROCESS;
 
@@ -244,9 +244,9 @@ BEGIN
 
 				-- untuk menekan tombol
 				BTN     <= '0';
-				WAIT FOR 500 ps;
+				WAIT FOR 250 ps;
 				BTN <= '1';
-				WAIT FOR 500 ps;
+				WAIT FOR 250 ps;
 				BTN <= '0';
 				-- ini nanti akan menyalakan toggle
 
@@ -275,9 +275,9 @@ BEGIN
 				
 				-- untuk menekan tombol
 				BTN     <= '0';
-				WAIT FOR 500 ps;
+				WAIT FOR 250 ps;
 				BTN <= '1';
-				WAIT FOR 500 ps;
+				WAIT FOR 250 ps;
 				BTN <= '0';
 				-- ini untuk mematikan Toggle
 				
@@ -299,7 +299,7 @@ BEGIN
 						END IF;
 				END CASE;
 				--agar jadi 60 ns
-				WAIT FOR 37 ns;
+				WAIT FOR 38 ns;
 			END LOOP;
 			--agar simulate ALL langsung berhenti
 			if (i = 1) then

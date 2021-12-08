@@ -35,7 +35,11 @@ BEGIN
 		IF (LOAD = '1') THEN
 			temp <= D;
 		ELSIF (rising_edge(CLK)) THEN
-			temp <= temp - 1;
+			IF (temp = "0000") THEN
+				temp <= "1001";
+			ELSE
+				temp <= temp - 1;
+			END IF;
 		ELSIF (falling_edge(CLK) AND (temp = "0000")) THEN
 			TCD <= '0';
 		END IF;
