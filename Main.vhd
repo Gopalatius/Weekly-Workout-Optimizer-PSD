@@ -17,7 +17,7 @@ END fsm;
 
 ARCHITECTURE arc_fsm OF fsm IS
 
-	SIGNAL BTN                                : STD_LOGIC;
+	SIGNAL BTN                                : STD_LOGIC := '0';
 	-- BTN -> Toggle, Countdown Counter
 	-- ini dari Analog to Digital Converter.
 	-- Thermistor mendeteksi workout optimal.
@@ -25,23 +25,23 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- ini input dari user. Harusnya ada button, tetapi
 	-- karena simulasi jadi dianggap sinyal saja
 
-	SIGNAL OPTIMAL                            : STD_LOGIC;
+	SIGNAL OPTIMAL                            : STD_LOGIC := '0';
 	-- OPTIMAL : OptimalLogic* -> OptimalNotification, FSM
 	-- OptimalLogic merupakan rangkaian Analog to Digital
 	-- Converter sehingga tidak ada dalam rangkaian VHDL.
 
-	SIGNAL real_O1, real_O2, real_O3, real_O4 : STD_LOGIC_VECTOR (6 DOWNTO 0);
+	SIGNAL real_O1, real_O2, real_O3, real_O4 : STD_LOGIC_VECTOR (6 DOWNTO 0) := "0000000";
 	--Nice&PoorLogic -> Real7Segment
 
-	SIGNAL ALL_0, TOGGLE, BTN_7, IS_7, TGL_7  : STD_LOGIC;
+	SIGNAL ALL_0, TOGGLE, BTN_7, IS_7, TGL_7  : STD_LOGIC := '0';
 	-- ALL_0  : OtherLogic -> FSM
 	-- TOGGLE : Toggle -> Clock, OtherLogic
 	-- BTN_7 : OtherLogic -> FSM
 	-- IS_7 : FSM -> OtherLogic, Nice&PoorLogic
 	-- TGL_7 : OtherLogic -> Countdown Counter
 
-	SIGNAL Q                                  : STD_LOGIC_VECTOR (7 DOWNTO 0);
-	SIGNAL D1, D2                             : STD_LOGIC_VECTOR (6 DOWNTO 0);
+	SIGNAL Q                                  : STD_LOGIC_VECTOR (7 DOWNTO 0) := "00000000";
+	SIGNAL D1, D2                             : STD_LOGIC_VECTOR (6 DOWNTO 0) := "0000000";
 	-- Q : Countdown Counter -> OtherLogic
 	-- D1, D2 : Countdown Counter -> OtherLogic
 
@@ -57,19 +57,19 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- kita tidak butuh JUMLAH_WORKOUT karena sudah direpresentasikan
 	-- oleh states
 	-- SIGNAL JUMLAH_WORKOUT, OPTIMAL_WORKOUT : STD_LOGIC (2 DOWNTO 0);
-	SIGNAL OPTIMAL_WORKOUT              : STD_LOGIC_VECTOR (2 DOWNTO 0);
+	SIGNAL OPTIMAL_WORKOUT              : STD_LOGIC_VECTOR (2 DOWNTO 0) := "000";
 	-- JUMLAH_WORKOUT : Output FSM
 	-- OPTIMAL_WORKOUT : Output FSM (OPTIMAL_WORKOUT(2) terpakai sebagai OPT_Q2)
 
-	SIGNAL Buzzer_opt, Buzzer_non_opt   : STD_LOGIC;
+	SIGNAL Buzzer_opt, Buzzer_non_opt   : STD_LOGIC := '0';
 	-- Membunyikan buzzer dan LED
 
-	SIGNAL ALL_0_AND_TOGGLE             : STD_LOGIC;
-	SIGNAL ALL_0_AND_TOGGLE_AND_OPTIMAL : STD_LOGIC;
+	SIGNAL ALL_0_AND_TOGGLE             : STD_LOGIC := '0';
+	SIGNAL ALL_0_AND_TOGGLE_AND_OPTIMAL : STD_LOGIC := '0';
 	--dijadikan intermediate signal agar bisa dimasukkan
 	--ke dalam sensitivity list. Tidak ada di proteus
 	
-	constant T : time := 1000 ps;
+	constant T : time := 1 ns;
 	-- anggap satu detik = 1 nanodetik demi testbench di ModelSim
 
 	--component untuk port mapping
