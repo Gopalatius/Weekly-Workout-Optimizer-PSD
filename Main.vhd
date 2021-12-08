@@ -57,11 +57,11 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- kita tidak butuh JUMLAH_WORKOUT karena sudah direpresentasikan
 	-- oleh states
 	-- SIGNAL JUMLAH_WORKOUT, OPTIMAL_WORKOUT : STD_LOGIC (2 DOWNTO 0);
-	SIGNAL OPTIMAL_WORKOUT              : STD_LOGIC (2 DOWNTO 0);
+	SIGNAL OPTIMAL_WORKOUT              : STD_LOGIC_VECTOR (2 DOWNTO 0);
 	-- JUMLAH_WORKOUT : Output FSM
 	-- OPTIMAL_WORKOUT : Output FSM (OPTIMAL_WORKOUT(2) terpakai sebagai OPT_Q2)
 
-	SIGNAL Buzzer_opt, Buzzer_non_opt   : OUT STD_LOGIC;
+	SIGNAL Buzzer_opt, Buzzer_non_opt   : STD_LOGIC;
 	-- Membunyikan buzzer dan LED
 
 	SIGNAL ALL_0_AND_TOGGLE             : STD_LOGIC;
@@ -80,6 +80,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 
 		);
 	END COMPONENT;
+
 	-- Countdown Counter component
 	COMPONENT CountDownCounter IS
 		PORT
@@ -87,10 +88,11 @@ ARCHITECTURE arc_fsm OF fsm IS
 			--Di proteus BTN_NOT, di sini BTN aja
 			CLK_STOP, BTN, TGL_7 : IN  STD_LOGIC;
 			Q                    : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-			O1, O2               : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
+			O1, O2               : OUT STD_LOGIC_VECTOR (6 DOWNTO 0)
 
 		);
 	END COMPONENT;
+
 	-- OtherLogic component
 	COMPONENT otherLogic IS
 		PORT
@@ -104,6 +106,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 
 		);
 	END COMPONENT;
+
 	-- OptimalNotification component
 	COMPONENT optNotif IS
 		PORT
@@ -114,6 +117,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 
 		);
 	END COMPONENT;
+
 	-- Nice&PoorLogic component
 	COMPONENT nicePoorLogic IS
 		PORT
@@ -127,11 +131,12 @@ ARCHITECTURE arc_fsm OF fsm IS
 			-- output yang menuju ke 7segment sebenarnya
 			-- isinya adalah output dari downcounter dan
 			-- untuk logika NICE dan POOR
-			O1, O2, O3, O4 : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
+			O1, O2, O3, O4 : OUT STD_LOGIC_VECTOR (6 DOWNTO 0)
 
 		);
 	END COMPONENT;
 BEGIN
+
 	-- Dijadikan intermediate signal agar bisa dimasukkan
 	-- ke dalam sensitivity list
 	ALL_0_AND_TOGGLE             <= ALL_0 AND TOGGLE;
@@ -141,19 +146,23 @@ BEGIN
 	-- Mapping untuk toggle
 	toggle_map : toggle_comp PORT MAP
 		(BTN => BTN, TOGGLE => TOGGLE);
+
 	-- Mapping untuk CountDownCounter
 	CountDownCounter_map : CountDownCounter PORT
 	MAP (CLK_STOP => CLK_STOP, BTN => BTN, TGL_7 => TGL_7, Q => Q,
 	O1 => D1, O2 => D2);
+
 	--Mapping untuk otherLogic
 	otherLogic_map : otherLogic PORT
 	MAP (TOGGLE => TOGGLE, IS_7 => IS_7, BTN => BTN, CLK => CLK,
 	Qin => Q, TGL_7 => TGL_7, BTN_7 => BTN_7, CLK_STOP => CLK_STOP,
 	ALL_0 => ALL_0);
+
 	-- Mapping untuk OptimalNotification
 	optNotif_map : optNotif PORT
 	MAP (ALL_0 => ALL_0, TOGGLE => TOGGLE, OPTIMAL => OPTIMAL,
 	Buzzer_opt => Buzzer_opt, Buzzer_non_opt => Buzzer_non_opt);
+
 	-- Mapping untuk NICE&POORLogic
 	nicePoorLogic_map : nicePoorLogic PORT
 	MAP (IS_7 => IS_7, OPT_Q2 => OPTIMAL_WORKOUT(2), I1 => D1,
@@ -201,7 +210,7 @@ BEGIN
 	--counter untuk OPTIMAL_WORKOUT
 	opt_workout_proc : PROCESS (ALL_0_AND_TOGGLE_AND_OPTIMAL) IS
 	BEGIN
-		IF (rising_edge(ALL_0_AND_TOGGLE_AND_OPTIMAL) THEN
+		IF (rising_edge(ALL_0_AND_TOGGLE_AND_OPTIMAL)) THEN
 			OPTIMAL_WORKOUT <= OPTIMAL_WORKOUT + 1;
 		END IF;
 	END PROCESS;
