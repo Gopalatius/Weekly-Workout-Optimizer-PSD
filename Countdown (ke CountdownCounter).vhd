@@ -35,7 +35,7 @@ BEGIN
 			temp <= D;
 		ELSIF (rising_edge(CLK)) THEN
 			temp <= temp - 1;
-		ELSIF (falling_edge(CLK) AND (temp = '1111')) THEN
+		ELSIF (falling_edge(CLK) AND (temp = "1111")) THEN
 			TCD <= '0';
 		END IF;
 
