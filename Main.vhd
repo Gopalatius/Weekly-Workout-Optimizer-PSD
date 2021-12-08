@@ -231,4 +231,14 @@ BEGIN
 			OPTIMAL_WORKOUT <= OPTIMAL_WORKOUT + 1;
 		END IF;
 	END PROCESS;
+	
+	tb_proc: PROCESS
+	BEGIN
+		BTN <= '0';
+		WAIT FOR 1 ps;
+		BTN <= '1';
+		WAIT FOR 1 ps;
+		BTN <= '0';
+		-- belum selesai
+	END PROCESS;
 END arc_fsm;
