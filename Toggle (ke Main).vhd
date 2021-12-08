@@ -26,13 +26,14 @@ ARCHITECTURE toggle_arch OF toggle_comp IS
 BEGIN
 	
 
+	TOGGLE <= buff_toggle;
 	
 	toggle_proc : PROCESS
 	BEGIN
 		IF (rising_edge(BTN)) THEN
 			inv_toggle <= NOT(buff_toggle);
 			wait for 1 ps;
-			TOGGLE <= inv_toggle;
+			buff_toggle <= inv_toggle;
 		END IF;
 	END PROCESS;
 
