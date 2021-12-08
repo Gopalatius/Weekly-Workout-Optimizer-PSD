@@ -10,14 +10,14 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_arith.ALL;
-USE ieee.std_logic_unsigned.all;
+USE ieee.std_logic_unsigned.ALL;
 
 ENTITY fsm IS
 END fsm;
 
 ARCHITECTURE arc_fsm OF fsm IS
 
-	SIGNAL BTN                                : STD_LOGIC := '0';
+	SIGNAL BTN                                : STD_LOGIC                     := '0';
 	-- BTN -> Toggle, Countdown Counter
 	-- ini dari Analog to Digital Converter.
 	-- Thermistor mendeteksi workout optimal.
@@ -25,7 +25,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- ini input dari user. Harusnya ada button, tetapi
 	-- karena simulasi jadi dianggap sinyal saja
 
-	SIGNAL OPTIMAL                            : STD_LOGIC := '0';
+	SIGNAL OPTIMAL                            : STD_LOGIC                     := '0';
 	-- OPTIMAL : OptimalLogic* -> OptimalNotification, FSM
 	-- OptimalLogic merupakan rangkaian Analog to Digital
 	-- Converter sehingga tidak ada dalam rangkaian VHDL.
@@ -33,7 +33,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 	SIGNAL real_O1, real_O2, real_O3, real_O4 : STD_LOGIC_VECTOR (6 DOWNTO 0) := "0000000";
 	--Nice&PoorLogic -> Real7Segment
 
-	SIGNAL ALL_0, TOGGLE, BTN_7, IS_7, TGL_7  : STD_LOGIC := '0';
+	SIGNAL ALL_0, TOGGLE, BTN_7, IS_7, TGL_7  : STD_LOGIC                     := '0';
 	-- ALL_0  : OtherLogic -> FSM
 	-- TOGGLE : Toggle -> Clock, OtherLogic
 	-- BTN_7 : OtherLogic -> FSM
@@ -45,12 +45,12 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- Q : Countdown Counter -> OtherLogic
 	-- D1, D2 : Countdown Counter -> OtherLogic
 
-	SIGNAL CLK, CLK_STOP                      : STD_LOGIC := '0';
+	SIGNAL CLK, CLK_STOP                      : STD_LOGIC                     := '0';
 	-- CLK : Clock -> OtherLogic
 	-- CLK_STOP : OtherLogic -> Countdown Counter
 
 	TYPE states IS (ST0, ST1, ST2, ST3, ST4, ST5, ST6, ST7);
-	SIGNAL present_state, next_state                       : states;
+	SIGNAL present_state, next_state    : states;
 	--komponen FSM.
 	-- states berhubungan dengan JUMLAH_WORKOUT
 
@@ -61,15 +61,15 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- JUMLAH_WORKOUT : Output FSM
 	-- OPTIMAL_WORKOUT : Output FSM (OPTIMAL_WORKOUT(2) terpakai sebagai OPT_Q2)
 
-	SIGNAL Buzzer_opt, Buzzer_non_opt   : STD_LOGIC := '0';
+	SIGNAL Buzzer_opt, Buzzer_non_opt   : STD_LOGIC                     := '0';
 	-- Membunyikan buzzer dan LED
 
-	SIGNAL ALL_0_AND_TOGGLE             : STD_LOGIC := '0';
-	SIGNAL ALL_0_AND_TOGGLE_AND_OPTIMAL : STD_LOGIC := '0';
+	SIGNAL ALL_0_AND_TOGGLE             : STD_LOGIC                     := '0';
+	SIGNAL ALL_0_AND_TOGGLE_AND_OPTIMAL : STD_LOGIC                     := '0';
 	--dijadikan intermediate signal agar bisa dimasukkan
 	--ke dalam sensitivity list. Tidak ada di proteus
-	
-	constant T : time := 1 ns;
+
+	CONSTANT T                          : TIME                          := 1 ns;
 	-- anggap satu detik = 1 nanodetik demi testbench di ModelSim
 
 	--component untuk port mapping
@@ -171,14 +171,14 @@ BEGIN
 	MAP (IS_7 => IS_7, OPT_Q2 => OPTIMAL_WORKOUT(2), I1 => D1,
 	I2 => D2, O1 => real_O1, O2 => real_O2, O3 => real_O3,
 	O4 => real_O4);
-	
+
 	-- Clock process
 	clk_proc : PROCESS
 	BEGIN
 		CLK <= '0';
-		wait for T/2;
+		WAIT FOR T/2;
 		CLK <= TOGGLE;
-		wait for T/2;
+		WAIT FOR T/2;
 	END PROCESS;
 
 	-- Async process karena state berubah bukan karena clock,
@@ -231,45 +231,69 @@ BEGIN
 			OPTIMAL_WORKOUT <= OPTIMAL_WORKOUT + 1;
 		END IF;
 	END PROCESS;
-	
-	tb_proc: PROCESS
+
+	tb_proc : PROCESS
 	BEGIN
-		--iterasi hari pertama hingga hari ketujuh
-		for j in 0 to 6 loop
-			-- initial state bahwa OPTIMAL '0'
-			-- karena belum mengukur suhu
-			OPTIMAL <= '0';
-			
-			-- untuk menekan tombol
-			BTN <= '0';
-			WAIT FOR 1 ps;
-			BTN <= '1';
-			WAIT FOR 1 ps;
-			BTN <= '0';
-			-- ini nanti akan menyalakan toggle
-			
-			-- untuk menunggu setimbang saat mengukur suhu
-			-- anggap 30 detik sudah setimbang
-			WAIT FOR 30 ns;
-			
-			-- untuk hari pertama sampai ketiga, workoutnya
-			-- optimal
-			if (j < 3) then
-				OPTIMAL <= '1';
-			end if;
-			
-			WAIT FOR 31 ns;
-			--pengukuran suhu telah selesai
-			OPTIMAL <= '0';
-			--sekarang clock harusnya telah berhenti
-			
-			if (j < 3) then
-				assert Buzzer_opt = '1' and real_O1 = "0000
-			
-			
-		end loop;
-		
-		
+		FOR i IN 0 TO 1 LOOP
+			--iterasi hari pertama hingga hari ketujuh
+			--iterasi ini untuk jika workout optimal nya < 4
+			FOR j IN 0 TO 6 LOOP
+				-- initial state bahwa OPTIMAL '0'
+				-- karena belum mengukur suhu
+				OPTIMAL <= '0';
+
+				-- untuk menekan tombol
+				BTN     <= '0';
+				WAIT FOR 1 ps;
+				BTN <= '1';
+				WAIT FOR 1 ps;
+				BTN <= '0';
+				-- ini nanti akan menyalakan toggle
+
+				-- untuk menunggu setimbang saat mengukur suhu
+				-- anggap 30 detik sudah setimbang
+				WAIT FOR 30 ns;
+
+				-- untuk hari pertama sampai ketiga, workoutnya
+				-- optimal
+				IF ((i = 0 AND j < 3) OR (i = 1 AND j < 5) THEN
+					OPTIMAL <= '1';
+				END IF;
+
+				WAIT FOR 31 ns;
+				-- pengukuran suhu telah selesai
+
+				-- jika suhu optimal ketika countdown selesai,
+				-- seharusnya buzzer optimal menyala
+				IF (OPTIMAL = '1') THEN
+					ASSERT Buzzer_opt = '1' REPORT "Error pada buzzer optimal"
+					SEVERITY error;
+				ELSE
+					ASSERT Buzzer_non_opt = '0' REPORT "Error pada buzzer non optimal"
+					SEVERITY error;
+				END IF;
+
+				-- cek output LED. Harusnya POOR akan muncul pada hari ketujuh
+				IF (NOT (PS = ST7)) THEN
+					ASSERT real_01 = "1111110" AND real_O2 = "1111110" AND
+					real_O3 = "0000000" AND real_O4 = "0000000" REPORT
+					"Error LED nya saat timer habis" SEVERITY error;
+				ELSE
+					IF (i = 0) THEN
+						ASSERT real_O1 = "0000101" AND real_O2 = "1111110" AND
+						real_O3 = "1111110" AND real_O4 = "1100111" AND OPTIMAL_WORKOUT = "011"
+						REPORT "Error saat State7 POOR" SEVERITY error;
+					ELSE
+						ASSERT real_O1 = "1001111" AND real_O2 = "1001110" AND
+						real_O3 = "0000110" AND real_O4 = "1110110" AND OPTIMAL_WORKOUT = "100"
+						REPORT "Error saat State7 NICE" SEVERITY error;
+					END IF;
+				END IF;
+			END LOOP;
+			--agar simulate ALL langsung berhenti
+			WAIT;
+		END LOOP;
+
 	END PROCESS;
-	
+
 END arc_fsm;
