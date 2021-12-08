@@ -234,14 +234,41 @@ BEGIN
 	
 	tb_proc: PROCESS
 	BEGIN
-		BTN <= '0';
-		WAIT FOR 1 ps;
-		BTN <= '1';
-		WAIT FOR 1 ps;
-		BTN <= '0';
-		-- belum selesai
+		--iterasi hari pertama hingga hari ketujuh
+		for j in 0 to 6 loop
+			-- initial state bahwa OPTIMAL '0'
+			-- karena belum mengukur suhu
+			OPTIMAL <= '0';
+			
+			-- untuk menekan tombol
+			BTN <= '0';
+			WAIT FOR 1 ps;
+			BTN <= '1';
+			WAIT FOR 1 ps;
+			BTN <= '0';
+			-- ini nanti akan menyalakan toggle
+			
+			-- untuk menunggu setimbang saat mengukur suhu
+			-- anggap 30 detik sudah setimbang
+			WAIT FOR 30 ns;
+			
+			-- untuk hari pertama sampai ketiga, workoutnya
+			-- optimal
+			if (j < 3) then
+				OPTIMAL <= '1';
+			end if;
+			
+			WAIT FOR 31 ns;
+			--pengukuran suhu telah selesai
+			OPTIMAL <= '0';
+			--sekarang clock harusnya telah berhenti
+			
+			if (j < 3) then
+				assert Buzzer_opt = '1' and real_O1 = "0000
+			
+			
+		end loop;
 		
-		WAIT FOR 30 ns;
 		
 	END PROCESS;
 	
