@@ -80,6 +80,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 
 		);
 	END COMPONENT;
+
 	-- Countdown Counter component
 	COMPONENT CountDownCounter IS
 		PORT
@@ -91,6 +92,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 
 		);
 	END COMPONENT;
+
 	-- OtherLogic component
 	COMPONENT otherLogic IS
 		PORT
@@ -104,6 +106,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 
 		);
 	END COMPONENT;
+
 	-- OptimalNotification component
 	COMPONENT optNotif IS
 		PORT
@@ -114,6 +117,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 
 		);
 	END COMPONENT;
+
 	-- Nice&PoorLogic component
 	COMPONENT nicePoorLogic IS
 		PORT
@@ -132,6 +136,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 		);
 	END COMPONENT;
 BEGIN
+
 	-- Dijadikan intermediate signal agar bisa dimasukkan
 	-- ke dalam sensitivity list
 	ALL_0_AND_TOGGLE             <= ALL_0 AND TOGGLE;
@@ -141,19 +146,23 @@ BEGIN
 	-- Mapping untuk toggle
 	toggle_map : toggle_comp PORT MAP
 		(BTN => BTN, TOGGLE => TOGGLE);
+
 	-- Mapping untuk CountDownCounter
 	CountDownCounter_map : CountDownCounter PORT
 	MAP (CLK_STOP => CLK_STOP, BTN => BTN, TGL_7 => TGL_7, Q => Q,
 	O1 => D1, O2 => D2);
+
 	--Mapping untuk otherLogic
 	otherLogic_map : otherLogic PORT
 	MAP (TOGGLE => TOGGLE, IS_7 => IS_7, BTN => BTN, CLK => CLK,
 	Qin => Q, TGL_7 => TGL_7, BTN_7 => BTN_7, CLK_STOP => CLK_STOP,
 	ALL_0 => ALL_0);
+
 	-- Mapping untuk OptimalNotification
 	optNotif_map : optNotif PORT
 	MAP (ALL_0 => ALL_0, TOGGLE => TOGGLE, OPTIMAL => OPTIMAL,
 	Buzzer_opt => Buzzer_opt, Buzzer_non_opt => Buzzer_non_opt);
+
 	-- Mapping untuk NICE&POORLogic
 	nicePoorLogic_map : nicePoorLogic PORT
 	MAP (IS_7 => IS_7, OPT_Q2 => OPTIMAL_WORKOUT(2), I1 => D1,
