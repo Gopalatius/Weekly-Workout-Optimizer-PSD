@@ -1,0 +1,392 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dG:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/09
+Ecountdown
+Z0 w1638957153
+Z1 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 1
+Z5 dG:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir
+Z6 8G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Countdown (ke CountdownCounter).vhd
+Z7 FG:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Countdown (ke CountdownCounter).vhd
+l0
+L16 1
+VYZ6];UP]X3EK2lbkd4D4P0
+!s100 U7=FcK_HnCA<bS7Ii1l5n1
+Z8 OV;C;2020.1;71
+32
+Z9 !s110 1638979196
+!i10b 1
+Z10 !s108 1638979196.000000
+Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Countdown (ke CountdownCounter).vhd|
+Z12 !s107 G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Countdown (ke CountdownCounter).vhd|
+!i113 1
+Z13 o-work work -2002 -explicit
+Z14 tExplicit 1 CvgOpt 0
+Aarch_countdown
+R1
+R2
+R3
+R4
+DEx4 work 9 countdown 0 22 YZ6];UP]X3EK2lbkd4D4P0
+!i122 1
+l31
+L28 20
+Vg[2]OH3fc2:klhUzOeII^2
+!s100 zD^GfeZ[Ve06U?fUB4RnG3
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Ecountdowncounter
+Z15 w1638948232
+R3
+R4
+!i122 2
+R5
+Z16 8G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/CountdownCounter (ke Main).vhd
+Z17 FG:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/CountdownCounter (ke Main).vhd
+l0
+Z18 L13 1
+V0iQ06^k<mC0Fd[4J`72nO1
+!s100 eHGzoLPOQVF7i6JCPnD`S0
+R8
+32
+Z19 !s110 1638979197
+!i10b 1
+Z20 !s108 1638979197.000000
+Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/CountdownCounter (ke Main).vhd|
+Z22 !s107 G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/CountdownCounter (ke Main).vhd|
+!i113 1
+R13
+R14
+Aarch_countdowncounter
+R3
+R4
+DEx4 work 16 countdowncounter 0 22 0iQ06^k<mC0Fd[4J`72nO1
+!i122 2
+l51
+L24 45
+VdGY6ARC6I0bdaSWGkZ8b:0
+!s100 Ag6h:<CW16BnN[:e8^I5j0
+R8
+32
+R19
+!i10b 1
+R20
+R21
+R22
+!i113 1
+R13
+R14
+Edec7seg
+Z23 w1638942811
+R3
+R4
+!i122 0
+R5
+Z24 8G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/7Seg (ke CountdownCounter).vhd
+Z25 FG:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/7Seg (ke CountdownCounter).vhd
+l0
+Z26 L12 1
+VP:[hj2A`N_b9z0=GRAMQ90
+!s100 36]if`TE5U3Ql>C8FQ;]]3
+R8
+32
+R9
+!i10b 1
+Z27 !s108 1638979195.000000
+Z28 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/7Seg (ke CountdownCounter).vhd|
+Z29 !s107 G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/7Seg (ke CountdownCounter).vhd|
+!i113 1
+R13
+R14
+Aarch_dec7seg
+R3
+R4
+DEx4 work 7 dec7seg 0 22 P:[hj2A`N_b9z0=GRAMQ90
+!i122 0
+l25
+L23 17
+Vo7M6TAIhF9;WbB5eeEGoZ0
+!s100 R?5jfhbA=ecH]<TX2_Aj@2
+R8
+32
+R9
+!i10b 1
+R27
+R28
+R29
+!i113 1
+R13
+R14
+Efsm
+Z30 w1638980478
+R1
+R2
+R3
+R4
+!i122 14
+R5
+Z31 8G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Main.vhd
+Z32 FG:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Main.vhd
+l0
+Z33 L15 1
+V9H1g0:UblGVEd5N2^1>oB2
+!s100 AM<V:Y6659Rolc`RI7NC_2
+R8
+32
+Z34 !s110 1638980484
+!i10b 1
+Z35 !s108 1638980484.000000
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Main.vhd|
+!s107 G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Main.vhd|
+!i113 1
+R13
+R14
+Aarc_fsm
+R1
+R2
+R3
+R4
+DEx4 work 3 fsm 0 22 9H1g0:UblGVEd5N2^1>oB2
+!i122 14
+l141
+L18 297
+VMXSL4Y1CKVIZTJW:RzjaB3
+!s100 ^:iQ@D@hC4fNa7Fk`Pmmi1
+R8
+32
+R34
+!i10b 1
+R35
+R36
+Z37 !s107 G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Main.vhd|
+!i113 1
+R13
+R14
+Enicepoorlogic
+Z38 w1638939940
+R3
+R4
+!i122 4
+R5
+Z39 8G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/NicePoorLogic (ke Main).vhd
+Z40 FG:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/NicePoorLogic (ke Main).vhd
+l0
+L14 1
+V`QA_ojFzSaUl;QmJXT6:O1
+!s100 `j`W5Fe[HnkRF?ZB^7>Vc3
+R8
+32
+R19
+!i10b 1
+R20
+Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/NicePoorLogic (ke Main).vhd|
+Z42 !s107 G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/NicePoorLogic (ke Main).vhd|
+!i113 1
+R13
+R14
+Anicepoorlogic_arc
+R3
+R4
+DEx4 work 13 nicepoorlogic 0 22 `QA_ojFzSaUl;QmJXT6:O1
+!i122 4
+l33
+L30 45
+VoDB?<P?o7VBFM2WHEaDOC2
+!s100 ^MWBI6[QhjEkWQ`8Gz:X21
+R8
+32
+R19
+!i10b 1
+R20
+R41
+R42
+!i113 1
+R13
+R14
+Eoptnotif
+Z43 w1638937515
+R3
+R4
+!i122 5
+R5
+Z44 8G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/OptimalNotification (ke Main).vhd
+Z45 FG:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/OptimalNotification (ke Main).vhd
+l0
+L10 1
+VS<j`K_j?bQW0gUEM1g2C]2
+!s100 i<IHKE?>V8aSb;f8eA^2`3
+R8
+32
+Z46 !s110 1638979198
+!i10b 1
+Z47 !s108 1638979198.000000
+Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/OptimalNotification (ke Main).vhd|
+Z49 !s107 G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/OptimalNotification (ke Main).vhd|
+!i113 1
+R13
+R14
+Aoptnotif_arch
+R3
+R4
+DEx4 work 8 optnotif 0 22 S<j`K_j?bQW0gUEM1g2C]2
+!i122 5
+l23
+L20 8
+Vc_IAUgMFOlVib4?l5ddb13
+!s100 _;E^d3mHU0RLoYVfD:1RD1
+R8
+32
+R46
+!i10b 1
+R47
+R48
+R49
+!i113 1
+R13
+R14
+Eotherlogic
+Z50 w1638942755
+R3
+R4
+!i122 6
+R5
+Z51 8G:\My Drive\PC\Kuliah\Semester 3\Perancangan Sistem Digital\Praktikum\Proyek Akhir\OtherLogic (ke Main).vhd
+Z52 FG:\My Drive\PC\Kuliah\Semester 3\Perancangan Sistem Digital\Praktikum\Proyek Akhir\OtherLogic (ke Main).vhd
+l0
+R18
+VWg:C]kbG09j51`m[adfni0
+!s100 9]5;eD6g_fdz`;:ijSZPh2
+R8
+32
+R46
+!i10b 1
+R47
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:\My Drive\PC\Kuliah\Semester 3\Perancangan Sistem Digital\Praktikum\Proyek Akhir\OtherLogic (ke Main).vhd|
+Z54 !s107 G:\My Drive\PC\Kuliah\Semester 3\Perancangan Sistem Digital\Praktikum\Proyek Akhir\OtherLogic (ke Main).vhd|
+!i113 1
+R13
+R14
+Aotherlogicarch
+R3
+R4
+DEx4 work 10 otherlogic 0 22 Wg:C]kbG09j51`m[adfni0
+!i122 6
+l31
+L26 33
+VNkzSP5L6[ZOVIg^Ym9:m[2
+!s100 7mhgnS4OcCL2<5clVj:bz3
+R8
+32
+R46
+!i10b 1
+R47
+R53
+R54
+!i113 1
+R13
+R14
+Etoggle_comp
+Z55 w1638935666
+R3
+R4
+!i122 7
+R5
+Z56 8G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Toggle (ke Main).vhd
+Z57 FG:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Toggle (ke Main).vhd
+l0
+R26
+VzPz1080XhC`0M15hej4FA0
+!s100 oMRWS0ZQ;cj=UA`;CI[^@1
+R8
+32
+R46
+!i10b 1
+R47
+Z58 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Toggle (ke Main).vhd|
+Z59 !s107 G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/Toggle (ke Main).vhd|
+!i113 1
+R13
+R14
+Atoggle_arch
+R3
+R4
+DEx4 work 11 toggle_comp 0 22 zPz1080XhC`0M15hej4FA0
+!i122 7
+l25
+L22 14
+V8Wi?eFU]C_=@5i0FT_>B32
+!s100 >nT0N4@I_Ha8ohl3XhGH22
+R8
+32
+R46
+!i10b 1
+R47
+R58
+R59
+!i113 1
+R13
+R14
+Ewrkcount
+Z60 w1638884828
+R1
+R2
+R3
+R4
+!i122 8
+R5
+Z61 8G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/workoutCounter.vhd
+Z62 FG:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/workoutCounter.vhd
+l0
+R33
+VbB^PcTej]aKW]EM=ha`d;2
+!s100 Y@;7CQ7CCB<UjHcRRL0VL0
+R8
+32
+Z63 !s110 1638979199
+!i10b 1
+R47
+Z64 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/workoutCounter.vhd|
+Z65 !s107 G:/My Drive/PC/Kuliah/Semester 3/Perancangan Sistem Digital/Praktikum/Proyek Akhir/workoutCounter.vhd|
+!i113 1
+R13
+R14
+Awrkcountarch
+R1
+R2
+R3
+R4
+DEx4 work 8 wrkcount 0 22 bB^PcTej]aKW]EM=ha`d;2
+!i122 8
+l33
+L27 40
+V<5MaOK55k@V9o[JlM^XZk0
+!s100 gL3n0hh88PMe0DkQV^>RF1
+R8
+32
+R63
+!i10b 1
+R47
+R64
+R65
+!i113 1
+R13
+R14
