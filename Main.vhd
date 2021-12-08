@@ -235,6 +235,7 @@ BEGIN
 	tb_proc: PROCESS
 	BEGIN
 		--iterasi hari pertama hingga hari ketujuh
+		-- untuk hari pertama hingga hari ketiga optimal
 		for j in 0 to 6 loop
 			-- initial state bahwa OPTIMAL '0'
 			-- karena belum mengukur suhu
@@ -267,7 +268,8 @@ BEGIN
 				assert Buzzer_opt = '1' and real_O1 = "0000";
 			end if;
 		end loop;
-
+		
+		--untuk hari pertama sampai hari ke4 optimal
 		for j in 0 to 6 loop
 			-- initial state bahwa OPTIMAL '0'
 			-- karena belum mengukur suhu
@@ -300,7 +302,8 @@ BEGIN
 				assert Buzzer_opt = '1' and real_O1 = "0000";
 			end if;
 		end loop;
-
+		
+		--untuk hari pertama sampai hari keenam optimal
 		for j in 0 to 6 loop
 			-- initial state bahwa OPTIMAL '0'
 			-- karena belum mengukur suhu
