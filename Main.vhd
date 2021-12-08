@@ -63,11 +63,27 @@ ARCHITECTURE arc_fsm OF fsm IS
 	--dijadikan intermediate signal agar bisa dimasukkan
 	--ke dalam sensitivity list. Tidak ada di proteus
 
+	--component untuk port mapping
+	-- toggle component
+	COMPONENT toggle_comp IS
+		PORT
+		(
+
+			BTN    : IN  STD_LOGIC;
+			TOGGLE : OUT STD_LOGIC
+
+		);
+	END COMPONENT;
+
 BEGIN
 	--dijadikan intermediate signal agar bisa dimasukkan
 	--ke dalam sensitivity list
 	ALL_0_AND_TOGGLE             <= ALL_0 AND TOGGLE;
 	ALL_0_AND_TOGGLE_AND_OPTIMAL <= ALL_0_AND_TOGGLE AND OPTIMAL;
+
+	--port mapping
+	toggle_map : toggle_comp PORT MAP
+		(BTN => BTN, TOGGLE => TOGGLE);
 
 	sync_proc : PROCESS (ALL_0_AND_TOGGLE, NS, BTN_7) IS
 	BEGIN
