@@ -25,7 +25,7 @@ ARCHITECTURE toggle_arch OF toggle_comp IS
 BEGIN
 	
 
-	toggle_proc : PROCESS (BTN)
+	toggle_proc : PROCESS
 	BEGIN
 		IF (rising_edge(BTN)) THEN
 			buff_toggle <= NOT(buff_toggle);
