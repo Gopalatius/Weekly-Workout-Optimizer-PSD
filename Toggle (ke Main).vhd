@@ -9,7 +9,7 @@
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-ENTITY toggle IS
+ENTITY toggle_comp IS
 	PORT
 	(
 
@@ -17,9 +17,9 @@ ENTITY toggle IS
 		TOGGLE : OUT STD_LOGIC
 
 	);
-END toggle;
+END toggle_comp;
 
-ARCHITECTURE toggle_arch OF toggle IS
+ARCHITECTURE toggle_arch OF toggle_comp IS
 	SIGNAL buff_toggle : STD_LOGIC := '0';
 
 BEGIN
