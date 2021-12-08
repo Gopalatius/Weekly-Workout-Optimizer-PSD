@@ -240,5 +240,9 @@ BEGIN
 		WAIT FOR 1 ps;
 		BTN <= '0';
 		-- belum selesai
+		
+		WAIT FOR 30 ns;
+		
 	END PROCESS;
+	
 END arc_fsm;
