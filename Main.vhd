@@ -44,7 +44,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- Q : Countdown Counter -> OtherLogic
 	-- D1, D2 : Countdown Counter -> OtherLogic
 
-	SIGNAL CLK, CLK_STOP                      : STD_LOGIC;
+	SIGNAL CLK, CLK_STOP                      : STD_LOGIC := '0';
 	-- CLK : Clock -> OtherLogic
 	-- CLK_STOP : OtherLogic -> Countdown Counter
 
@@ -67,6 +67,9 @@ ARCHITECTURE arc_fsm OF fsm IS
 	SIGNAL ALL_0_AND_TOGGLE_AND_OPTIMAL : STD_LOGIC;
 	--dijadikan intermediate signal agar bisa dimasukkan
 	--ke dalam sensitivity list. Tidak ada di proteus
+	
+	constant T : time := 1 ns;
+	-- anggap satu detik = 1 nanodetik demi testbench di ModelSim
 
 	--component untuk port mapping
 	-- toggle component
@@ -167,8 +170,19 @@ BEGIN
 	MAP (IS_7 => IS_7, OPT_Q2 => OPTIMAL_WORKOUT(2), I1 => D1,
 	I2 => D2, O1 => real_O1, O2 => real_O2, O3 => real_O3,
 	O4 => real_O4);
+	
+	-- Clock process
+	clk_proc : PROCESS
+	BEGIN
+		CLK <= '0';
+		wait for T/2;
+		CLK <= TOGGLE;
+		wait for T/2;
+	END PROCESS;
 
-	sync_proc : PROCESS (ALL_0_AND_TOGGLE, NS, BTN_7) IS
+	-- Async process karena state berubah bukan karena clock,
+	-- melainkan karena TOGGLE dan ALL_0
+	async_proc : PROCESS (ALL_0_AND_TOGGLE, NS, BTN_7) IS
 	BEGIN
 		IF (BTN_7 = '1') THEN
 			PS <= ST0;
@@ -177,6 +191,8 @@ BEGIN
 		END IF;
 	END PROCESS;
 
+	-- Process untuk menentukan next state nya apa
+	-- next state tidak dipengaruhi oleh input
 	comb_proc : PROCESS (PS) IS
 	BEGIN
 		CASE PS IS
