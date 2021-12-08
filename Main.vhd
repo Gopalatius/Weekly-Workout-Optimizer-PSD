@@ -234,7 +234,6 @@ BEGIN
 
 	tb_proc : PROCESS
 	BEGIN
-<<<<<<< HEAD
 		FOR i IN 0 TO 1 LOOP
 			--iterasi hari pertama hingga hari ketujuh
 			--iterasi ini untuk jika workout optimal nya < 4
