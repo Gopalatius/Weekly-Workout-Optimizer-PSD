@@ -74,17 +74,33 @@ ARCHITECTURE arc_fsm OF fsm IS
 
 		);
 	END COMPONENT;
+	-- Countdown Counter component
+	COMPONENT CountDownCounter IS
+		PORT
+		(
+			--Di proteus BTN_NOT, di sini BTN aja
+			CLK_STOP, BTN, TGL_7 : IN  STD_LOGIC;
+			Q                    : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+			O1, O2               : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
+
+		);
+	END COMPONENT;
 
 BEGIN
-	--dijadikan intermediate signal agar bisa dimasukkan
-	--ke dalam sensitivity list
+	-- Dijadikan intermediate signal agar bisa dimasukkan
+	-- ke dalam sensitivity list
 	ALL_0_AND_TOGGLE             <= ALL_0 AND TOGGLE;
 	ALL_0_AND_TOGGLE_AND_OPTIMAL <= ALL_0_AND_TOGGLE AND OPTIMAL;
 
-	--port mapping
+	-- Port mapping
+	-- Mapping untuk toggle
 	toggle_map : toggle_comp PORT MAP
 		(BTN => BTN, TOGGLE => TOGGLE);
-
+	-- Mapping untuk CountDownCounter
+	CountDownCounter_map : CountDownCounter PORT
+	MAP (CLK_STOP => CLK_STOP, BTN => BTN, TGL_7 => TGL_7, Q => Q;
+	O1 => D1, O2 => D2);
+	
 	sync_proc : PROCESS (ALL_0_AND_TOGGLE, NS, BTN_7) IS
 	BEGIN
 		IF (BTN_7 = '1') THEN
