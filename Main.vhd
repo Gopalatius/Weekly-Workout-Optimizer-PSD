@@ -85,6 +85,19 @@ ARCHITECTURE arc_fsm OF fsm IS
 
 		);
 	END COMPONENT;
+	-- OtherLogic component
+	COMPONENT otherLogic IS
+		PORT
+		(
+			--A1 dan A2 dan A1_out A2_out tidak dibutuhkan lagi
+			--karena decoder sudah benar.
+
+			TOGGLE, IS_7, BTN, CLK        : IN  STD_LOGIC;
+			Qin                           : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
+			TGL_7, BTN_7, CLK_STOP, ALL_0 : OUT STD_LOGIC
+
+		);
+	END otherLogic;
 
 BEGIN
 	-- Dijadikan intermediate signal agar bisa dimasukkan
@@ -98,8 +111,13 @@ BEGIN
 		(BTN => BTN, TOGGLE => TOGGLE);
 	-- Mapping untuk CountDownCounter
 	CountDownCounter_map : CountDownCounter PORT
-	MAP (CLK_STOP => CLK_STOP, BTN => BTN, TGL_7 => TGL_7, Q => Q;
+	MAP (CLK_STOP => CLK_STOP, BTN => BTN, TGL_7 => TGL_7, Q => Q,
 	O1 => D1, O2 => D2);
+	--Mapping untuk otherLogic
+	otherLogic_map : otherLogic PORT
+	MAP (TOGGLE => TOGGLE, IS_7 => IS_7, BTN => BTN, CLK => CLK, 
+	Qin => Q, TGL_7 => TGL_7, BTN_7 => BTN_7, CLK_STOP => CLK_STOP,
+	ALL_0 => ALL_0);
 	
 	sync_proc : PROCESS (ALL_0_AND_TOGGLE, NS, BTN_7) IS
 	BEGIN
