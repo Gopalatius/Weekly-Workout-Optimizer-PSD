@@ -18,9 +18,8 @@ ENTITY otherLogic IS
 
 		TOGGLE, IS_7, BTN, CLK        : IN  STD_LOGIC;
 		Qin                           : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
-		--A1, A2                        : IN  STD_LOGIC;
-		TGL_7, BTN_7, CLK_STOP, ALL_0 : OUT STD_LOGIC;
-		--A1_out, A2_out                : OUT STD_LOGIC
+		TGL_7, BTN_7, CLK_STOP, ALL_0 : OUT STD_LOGIC
+		
 	);
 END otherLogic;
 
