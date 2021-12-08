@@ -10,6 +10,7 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_arith.ALL;
+USE ieee.std_logic_unsigned.all;
 
 ENTITY fsm IS
 END fsm;
@@ -49,7 +50,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- CLK_STOP : OtherLogic -> Countdown Counter
 
 	TYPE states IS (ST0, ST1, ST2, ST3, ST4, ST5, ST6, ST7);
-	SIGNAL PS, NS                       : states;
+	SIGNAL present_state, next_state                       : states;
 	--komponen FSM.
 	-- states berhubungan dengan JUMLAH_WORKOUT
 
@@ -68,7 +69,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 	--dijadikan intermediate signal agar bisa dimasukkan
 	--ke dalam sensitivity list. Tidak ada di proteus
 	
-	constant T : time := 1 ns;
+	constant T : time := 1000 ps;
 	-- anggap satu detik = 1 nanodetik demi testbench di ModelSim
 
 	--component untuk port mapping
@@ -182,45 +183,46 @@ BEGIN
 
 	-- Async process karena state berubah bukan karena clock,
 	-- melainkan karena TOGGLE dan ALL_0
-	async_proc : PROCESS (ALL_0_AND_TOGGLE, NS, BTN_7) IS
+	async_proc : PROCESS (ALL_0_AND_TOGGLE, next_state, BTN_7) IS
 	BEGIN
 		IF (BTN_7 = '1') THEN
-			PS <= ST0;
+			present_state <= ST0;
 		ELSIF (rising_edge(ALL_0_AND_TOGGLE)) THEN
-			PS <= NS;
+			present_state <= next_state;
 		END IF;
 	END PROCESS;
 
 	-- Process untuk menentukan next state nya apa
 	-- next state tidak dipengaruhi oleh input
-	comb_proc : PROCESS (PS) IS
+	comb_proc : PROCESS (present_state) IS
 	BEGIN
-		CASE PS IS
+		CASE present_state IS
 			WHEN ST0 =>
-				NS <= ST1;
+				next_state <= ST1;
 			WHEN ST1 =>
-				NS <= ST2;
+				next_state <= ST2;
 			WHEN ST2 =>
-				NS <= ST3;
+				next_state <= ST3;
 			WHEN ST3 =>
-				NS <= ST4;
+				next_state <= ST4;
 			WHEN ST4 =>
-				NS <= ST5;
+				next_state <= ST5;
 			WHEN ST5 =>
-				NS <= ST6;
+				next_state <= ST6;
 			WHEN ST6 =>
-				NS <= ST7;
+				next_state <= ST7;
 			WHEN ST7 =>
-				NS <= ST0;
+				next_state <= ST0;
 		END CASE;
 	END PROCESS;
 
 	-- states menentukan JUMLAH_WORKOUT
-	WITH PS SELECT
+	WITH present_state SELECT
 		IS_7 <= '1' WHEN ST7,
 		'0' WHEN OTHERS;
-	WITH PS SELECT
-		OPTIMAL_WORKOUT <= "000" WHEN ST0;
+	WITH present_state SELECT
+		OPTIMAL_WORKOUT <= "000" WHEN ST0,
+		OPTIMAL_WORKOUT WHEN OTHERS;
 
 	--counter untuk OPTIMAL_WORKOUT
 	opt_workout_proc : PROCESS (ALL_0_AND_TOGGLE_AND_OPTIMAL) IS
