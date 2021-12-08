@@ -25,7 +25,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- ini input dari user. Harusnya ada button, tetapi
 	-- karena simulasi jadi dianggap sinyal saja
 
-	SIGNAL OPTIMAL                            : STD_LOGIC
+	SIGNAL OPTIMAL                            : STD_LOGIC;
 	-- OPTIMAL : OptimalLogic* -> OptimalNotification, FSM
 	-- OptimalLogic merupakan rangkaian Analog to Digital
 	-- Converter sehingga tidak ada dalam rangkaian VHDL.
@@ -50,7 +50,7 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- CLK_STOP : OtherLogic -> Countdown Counter
 
 	TYPE states IS (ST0, ST1, ST2, ST3, ST4, ST5, ST6, ST7);
-	SIGNAL PS, NS                          : states
+	SIGNAL PS, NS                          : states;
 	--komponen FSM.
 	-- states berhubungan dengan JUMLAH_WORKOUT
 
