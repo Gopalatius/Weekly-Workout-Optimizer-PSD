@@ -1,18 +1,18 @@
-# Compile of 7Seg (ke CountdownCounter).vhd was successful.
-# Compile of Countdown (ke CountdownCounter).vhd was successful.
-# Compile of CountdownCounter (ke Main).vhd was successful.
-# Compile of Main.vhd failed with 15 errors.
-# Compile of NicePoorLogic (ke Main).vhd was successful.
-# Compile of OptimalNotification (ke Main).vhd was successful.
-# Compile of OtherLogic (ke Main).vhd was successful.
-# Compile of Toggle (ke Main).vhd was successful.
-# Compile of workoutCounter.vhd was successful.
-# 9 compiles, 1 failed with 15 errors.
-# Compile of Main.vhd failed with 15 errors.
-# Compile of Main.vhd failed with 8 errors.
-# Compile of Main.vhd failed with 3 errors.
-# Compile of Main.vhd failed with 3 errors.
-# Compile of Main.vhd failed with 2 errors.
-# Compile of Main.vhd was successful.
-# Compile of Main.vhd failed with 5 errors.
-# Compile of Main.vhd was successful.
+vsim -gui work.fsm
+# vsim -gui work.fsm 
+# Start time: 23:54:14 on Dec 08,2021
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.fsm(arc_fsm)
+# Loading work.toggle_comp(toggle_arch)
+# Loading work.countdowncounter(arch_countdowncounter)
+# Loading work.countdown(arch_countdown)
+# Loading work.dec7seg(arch_dec7seg)
+# Loading work.otherlogic(otherlogicarch)
+# Loading work.optnotif(optnotif_arch)
+# Loading work.nicepoorlogic(nicepoorlogic_arc)
+# End time: 23:55:12 on Dec 08,2021, Elapsed time: 0:00:58
+# Errors: 0, Warnings: 1

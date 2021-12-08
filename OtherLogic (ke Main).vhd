@@ -25,8 +25,8 @@ END otherLogic;
 
 ARCHITECTURE otherLogicArch OF otherLogic IS
 
-	SIGNAL all0Signal    : STD_LOGIC;
-	SIGNAL clkStopSignal : STD_LOGIC;
+	SIGNAL all0Signal    : STD_LOGIC := '0';
+	SIGNAL clkStopSignal : STD_LOGIC := '0';
 
 BEGIN
 	-- Jika alat tidak menyala (dari toggle)
