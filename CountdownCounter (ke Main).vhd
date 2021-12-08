@@ -15,8 +15,7 @@ USE ieee.std_logic_unsigned.ALL;
 ENTITY CountDownCounter IS
 	PORT
 	(
-		--Di proteus BTN_NOT, di sini BTN aja
-		--alasan terdapat A dibuat double underscore
+		--Di proteus BTN_NOT, di sini BTN aja untuk load
 		CLK_STOP, BTN, TGL_7 : IN  STD_LOGIC;
 		Q                    : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
 		O1, O2               : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
