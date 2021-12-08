@@ -38,18 +38,15 @@ BEGIN
 	-- maka ini akan mereset state (Q = "000" dan
 	-- kembali ke state awal)
 	BTN_7 <= IS_7 AND BTN;
-	PROCESS (Qin, CLK)
-	BEGIN
-		-- Mendeteksi apakah semua countdown counter
-		-- telah mencapai 0. Artinya waktu menghitung
-		-- suhu telah habis.
-		all0Signal    <= NOT (Qin(0) OR Qin(1) OR Qin(2) OR Qin(3) OR Qin(4) OR Qin(5) OR Qin(6) OR Qin(7));
-
-		-- Untuk clock stop. Membuat counterdown
-		-- tidak menghitung lagi jika waktu sudah habis
-		clkStopSignal <= (NOT all0Signal) AND CLK;
-
-	END PROCESS;
+	
+	-- Mendeteksi apakah semua countdown counter
+	-- telah mencapai 0. Artinya waktu menghitung
+	-- suhu telah habis.
+	all0Signal    <= NOT (Qin(0) OR Qin(1) OR Qin(2) OR Qin(3) OR Qin(4) OR Qin(5) OR Qin(6) OR Qin(7));
+	-- Untuk clock stop. Membuat counterdown
+	-- tidak menghitung lagi jika waktu sudah habis
+	clkStopSignal <= (NOT all0Signal) AND CLK;
+	
 
 	ALL_0    <= all0Signal;
 	CLK_STOP <= clkStopSignal;
