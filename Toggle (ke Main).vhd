@@ -21,16 +21,18 @@ END toggle_comp;
 
 ARCHITECTURE toggle_arch OF toggle_comp IS
 	SIGNAL buff_toggle : STD_LOGIC := '0';
+	SIGNAL inv_toggle : STD_LOGIC := '0';
 
 BEGIN
 	
 
+	
 	toggle_proc : PROCESS
 	BEGIN
 		IF (rising_edge(BTN)) THEN
-			buff_toggle <= NOT(buff_toggle);
+			inv_toggle <= NOT(buff_toggle);
 			wait for 1 ps;
-			TOGGLE <= buff_toggle;
+			TOGGLE <= inv_toggle;
 		END IF;
 	END PROCESS;
 
