@@ -50,22 +50,22 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- CLK_STOP : OtherLogic -> Countdown Counter
 
 	TYPE states IS (ST0, ST1, ST2, ST3, ST4, ST5, ST6, ST7);
-	SIGNAL PS, NS                          : states;
+	SIGNAL PS, NS                       : states;
 	--komponen FSM.
 	-- states berhubungan dengan JUMLAH_WORKOUT
 
 	-- kita tidak butuh JUMLAH_WORKOUT karena sudah direpresentasikan
 	-- oleh states
 	-- SIGNAL JUMLAH_WORKOUT, OPTIMAL_WORKOUT : STD_LOGIC (2 DOWNTO 0);
-	SIGNAL OPTIMAL_WORKOUT : STD_LOGIC (2 DOWNTO 0);
+	SIGNAL OPTIMAL_WORKOUT              : STD_LOGIC (2 DOWNTO 0);
 	-- JUMLAH_WORKOUT : Output FSM
 	-- OPTIMAL_WORKOUT : Output FSM (OPTIMAL_WORKOUT(2) terpakai sebagai OPT_Q2)
 
-	SIGNAL Buzzer_opt, Buzzer_non_opt      : OUT STD_LOGIC;
+	SIGNAL Buzzer_opt, Buzzer_non_opt   : OUT STD_LOGIC;
 	-- Membunyikan buzzer dan LED
 
-	SIGNAL ALL_0_AND_TOGGLE                : STD_LOGIC;
-	SIGNAL ALL_0_AND_TOGGLE_AND_OPTIMAL    : STD_LOGIC;
+	SIGNAL ALL_0_AND_TOGGLE             : STD_LOGIC;
+	SIGNAL ALL_0_AND_TOGGLE_AND_OPTIMAL : STD_LOGIC;
 	--dijadikan intermediate signal agar bisa dimasukkan
 	--ke dalam sensitivity list. Tidak ada di proteus
 
@@ -197,7 +197,7 @@ BEGIN
 		'0' WHEN OTHERS;
 	WITH PS SELECT
 		OPTIMAL_WORKOUT <= "000" WHEN ST0;
-	
+
 	--counter untuk OPTIMAL_WORKOUT
 	opt_workout_proc : PROCESS (ALL_0_AND_TOGGLE_AND_OPTIMAL) IS
 	BEGIN
