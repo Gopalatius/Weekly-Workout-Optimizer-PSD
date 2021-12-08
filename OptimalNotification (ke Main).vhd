@@ -12,8 +12,6 @@ ENTITY optNotif IS
 	(
  
 		ALL_0, TOGGLE, OPTIMAL : IN STD_LOGIC;
-		BTN_7 : IN STD_LOGIC;
-
 		Buzzer_opt, Buzzer_non_opt : OUT STD_LOGIC
 
 	);

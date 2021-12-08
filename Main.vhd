@@ -58,6 +58,9 @@ ARCHITECTURE arc_fsm OF fsm IS
 	-- JUMLAH_WORKOUT : Output FSM
 	-- OPTIMAL_WORKOUT : Output FSM (OPTIMAL_WORKOUT(2) terpakai sebagai OPT_Q2)
 
+	SIGNAL Buzzer_opt, Buzzer_non_opt      : OUT STD_LOGIC;
+	-- Membunyikan buzzer dan LED
+
 	SIGNAL ALL_0_AND_TOGGLE                : STD_LOGIC;
 	SIGNAL ALL_0_AND_TOGGLE_AND_OPTIMAL    : STD_LOGIC;
 	--dijadikan intermediate signal agar bisa dimasukkan
@@ -97,8 +100,17 @@ ARCHITECTURE arc_fsm OF fsm IS
 			TGL_7, BTN_7, CLK_STOP, ALL_0 : OUT STD_LOGIC
 
 		);
-	END otherLogic;
+	END COMPONENT;
+	-- OptimalNotification component
+	COMPONENT optNotif IS
+		PORT
+		(
 
+			ALL_0, TOGGLE, OPTIMAL     : IN  STD_LOGIC;
+			Buzzer_opt, Buzzer_non_opt : OUT STD_LOGIC
+
+		);
+	END COMPONENT;
 BEGIN
 	-- Dijadikan intermediate signal agar bisa dimasukkan
 	-- ke dalam sensitivity list
@@ -115,10 +127,14 @@ BEGIN
 	O1 => D1, O2 => D2);
 	--Mapping untuk otherLogic
 	otherLogic_map : otherLogic PORT
-	MAP (TOGGLE => TOGGLE, IS_7 => IS_7, BTN => BTN, CLK => CLK, 
+	MAP (TOGGLE => TOGGLE, IS_7 => IS_7, BTN => BTN, CLK => CLK,
 	Qin => Q, TGL_7 => TGL_7, BTN_7 => BTN_7, CLK_STOP => CLK_STOP,
 	ALL_0 => ALL_0);
-	
+	-- Mapping untuk OptimalNotification
+	optNotif_map : optNotif PORT
+	MAP (ALL_0 => ALL_0, TOGGLE => TOGGLE, OPTIMAL => OPTIMAL,
+	Buzzer_opt => Buzzer_opt, Buzzer_non_opt => Buzzer_non_opt);
+
 	sync_proc : PROCESS (ALL_0_AND_TOGGLE, NS, BTN_7) IS
 	BEGIN
 		IF (BTN_7 = '1') THEN
