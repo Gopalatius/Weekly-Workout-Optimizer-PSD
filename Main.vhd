@@ -111,6 +111,22 @@ ARCHITECTURE arc_fsm OF fsm IS
 
 		);
 	END COMPONENT;
+	-- Nice&PoorLogic component
+	COMPONENT nicePoorLogic IS
+	PORT (
+		-- OPT_Q2' tidak perlu
+		IS_7, OPT_Q2			: IN STD_LOGIC;
+		
+		-- Input dari output decoder 1 dan 2 (1 LSB dan 2 MSB)
+		I1, I2 : IN STD_LOGIC_VECTOR (6 downto 0);
+
+		-- output yang menuju ke 7segment sebenarnya
+		-- isinya adalah output dari downcounter dan
+		-- untuk logika NICE dan POOR
+		O1, O2, O3, O4 : OUT STD_LOGIC_VECTOR (6 downto 0);
+		
+	);
+	END COMPONENT;
 BEGIN
 	-- Dijadikan intermediate signal agar bisa dimasukkan
 	-- ke dalam sensitivity list
@@ -134,6 +150,11 @@ BEGIN
 	optNotif_map : optNotif PORT
 	MAP (ALL_0 => ALL_0, TOGGLE => TOGGLE, OPTIMAL => OPTIMAL,
 	Buzzer_opt => Buzzer_opt, Buzzer_non_opt => Buzzer_non_opt);
+	-- Mapping untuk NICE&POORLogic
+	nicePoorLogic_map : nicePoorLogic port
+	MAP (IS_7 => IS_7, OPT_Q2 => OPTIMAL_WORKOUT(2),I1 => D1, 
+	I2 => D2, O1 => real_O1, O2 => real_O2, O3 => real_O3,
+	O4 => real_O4);
 
 	sync_proc : PROCESS (ALL_0_AND_TOGGLE, NS, BTN_7) IS
 	BEGIN
