@@ -18,7 +18,7 @@ ENTITY CountDownCounter IS
 		--Di proteus BTN_NOT, di sini BTN aja untuk load
 		CLK_STOP, BTN, TGL_7 : IN  STD_LOGIC;
 		Q                    : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-		O1, O2               : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
+		O1, O2               : OUT STD_LOGIC_VECTOR (6 DOWNTO 0)
 
 	);
 END CountDownCounter;
@@ -30,7 +30,7 @@ ARCHITECTURE arch_CountDownCounter OF CountDownCounter IS
 
 			I     : IN  STD_LOGIC_VECTOR (3 DOWNTO 0);
 			TGL_7 : IN  STD_LOGIC;
-			O     : OUT STD_LOGIC (6 DOWNTO 0)
+			O     : OUT STD_LOGIC_VECTOR (6 DOWNTO 0)
 
 		);
 	END COMPONENT;
