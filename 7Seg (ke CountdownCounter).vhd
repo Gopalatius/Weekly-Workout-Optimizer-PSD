@@ -33,7 +33,7 @@ BEGIN
 	(I(1) AND (NOT I(0))) OR (I(2) AND I(0) AND (NOT I(1)))) AND TGL_7;
 	O(2) <= ((NOT(I(0)) AND ((NOT I(2)) OR I(1))) AND TGL_7);
 	O(1) <= (I(3) OR (I(2) AND (NOT I(0))) OR (I(2) AND (NOT I(1))) OR
-	(NOT (I(1) OR I(0)))) AND TGL_7;
-	O(0) <= (I(3) OR (I(2) XOR I(1)) OR (I(2) OR (NOT I(0)))) AND TGL_7;
+	((NOT I(1)) AND (not I(0))) AND TGL_7;
+	O(0) <= (I(3) OR (I(2) XOR I(1)) OR (I(2) AND (NOT I(0)))) AND TGL_7;
 
 END arch_Dec7Seg;
