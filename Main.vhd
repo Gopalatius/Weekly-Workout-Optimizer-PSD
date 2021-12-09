@@ -11,6 +11,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_arith.ALL;
 USE ieee.std_logic_unsigned.ALL;
+use ieee.numeric_std.all;
 
 ENTITY fsm IS
 END fsm;
@@ -68,6 +69,8 @@ ARCHITECTURE arc_fsm OF fsm IS
 	SIGNAL ALL_0_AND_TOGGLE_AND_OPTIMAL : STD_LOGIC                     := '0';
 	--dijadikan intermediate signal agar bisa dimasukkan
 	--ke dalam sensitivity list. Tidak ada di proteus
+
+	SIGNAL IS_0 : STD_LOGIC := '0';
 
 	CONSTANT T                          : TIME                          := 1 ns;
 	-- anggap satu detik = 1 nanodetik demi testbench di ModelSim
@@ -198,7 +201,6 @@ BEGIN
 	BEGIN
 		CASE present_state IS
 			WHEN ST0 =>
-				OPTIMAL_WORKOUT <= "000";
 				next_state <= ST1;
 			WHEN ST1 =>
 				next_state <= ST2;
@@ -221,13 +223,18 @@ BEGIN
 	WITH present_state SELECT
 		IS_7 <= '1' WHEN ST7,
 		'0' WHEN OTHERS;
+	WITH present_state SELECT
+		IS_0 <= '1' WHEN ST0,
+		'0' WHEN OTHERS;
 	
 
 	--counter untuk OPTIMAL_WORKOUT
 	opt_workout_proc : PROCESS 
 	BEGIN
+		IF(FALLING_EDGE(ALL_0_AND_TOGGLE_AND_OPTIMAL) AND IS_7 = '1') then
+			OPTIMAL_WORKOUT <= "000";
+		END IF;
 		IF (rising_edge(ALL_0_AND_TOGGLE_AND_OPTIMAL)) THEN
-			wait for 1 ps;
 			OPTIMAL_WORKOUT <= OPTIMAL_WORKOUT + 1;
 		END IF;
 		wait on ALL_0_AND_TOGGLE_AND_OPTIMAL;
