@@ -198,6 +198,7 @@ BEGIN
 	BEGIN
 		CASE present_state IS
 			WHEN ST0 =>
+				OPTIMAL_WORKOUT <= "000";
 				next_state <= ST1;
 			WHEN ST1 =>
 				next_state <= ST2;
@@ -220,16 +221,16 @@ BEGIN
 	WITH present_state SELECT
 		IS_7 <= '1' WHEN ST7,
 		'0' WHEN OTHERS;
-	WITH present_state SELECT
-		OPTIMAL_WORKOUT <= "000" WHEN ST0,
-		OPTIMAL_WORKOUT WHEN OTHERS;
+	
 
 	--counter untuk OPTIMAL_WORKOUT
-	opt_workout_proc : PROCESS (ALL_0_AND_TOGGLE_AND_OPTIMAL) IS
+	opt_workout_proc : PROCESS 
 	BEGIN
 		IF (rising_edge(ALL_0_AND_TOGGLE_AND_OPTIMAL)) THEN
+			wait for 1 ps;
 			OPTIMAL_WORKOUT <= OPTIMAL_WORKOUT + 1;
 		END IF;
+		wait on ALL_0_AND_TOGGLE_AND_OPTIMAL;
 	END PROCESS;
 
 	tb_proc : PROCESS
